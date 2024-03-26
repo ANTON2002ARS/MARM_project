@@ -197,6 +197,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9091799194266482944}
   - component: {fileID: 4022431410160614609}
+  - component: {fileID: 4121372717249996935}
   m_Layer: 0
   m_Name: Manipulator
   m_TagString: Untagged
@@ -241,6 +242,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 10, y: 6, z: 62}
   m_Center: {x: 0, y: -2, z: 6}
+--- !u!114 &4121372717249996935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 458232555964895203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23fb384524ac03c469562bfb3a038f26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &507460560036540242
 GameObject:
   m_ObjectHideFlags: 0

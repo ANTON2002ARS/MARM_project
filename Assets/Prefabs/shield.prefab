@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 778749787156493468}
+  - component: {fileID: 5554136552575323696}
+  - component: {fileID: 2210952120472369807}
   m_Layer: 0
   m_Name: shield
   m_TagString: Untagged
@@ -32,6 +34,41 @@ Transform:
   - {fileID: 2186025162444410559}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5554136552575323696
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 109630529156935206}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 59, y: 360, z: 2151}
+  m_Center: {x: -78, y: 189, z: -1076}
+--- !u!114 &2210952120472369807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 109630529156935206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5559f418bb198bd46923d6d24f9a9a9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action_build: {fileID: 0}
+  model_children: {fileID: 2516381416177411466}
 --- !u!1 &2516381416177411466
 GameObject:
   m_ObjectHideFlags: 0
@@ -43,7 +80,7 @@ GameObject:
   - component: {fileID: 2186025162444410559}
   - component: {fileID: 4999410127467824480}
   m_Layer: 0
-  m_Name: body
+  m_Name: Shield_body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -82,7 +119,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 0.7, y: 3.5, z: 21.7}
   m_Center: {x: -0.7, y: 1.8, z: -10.7}

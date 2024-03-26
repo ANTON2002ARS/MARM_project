@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class MouseLook : MonoBehaviour
 {
+    float Leigth = 30;
+    Camera fps_cam;
+
     [SerializeField] private float _sensitivity;
     [SerializeField] private Transform _character;
     public bool can_rotation;
@@ -9,6 +12,7 @@ public class MouseLook : MonoBehaviour
 
     void Start()
     {
+        fps_cam = this.GetComponent<Camera>();
         can_rotation = true;
         Cursor.lockState = CursorLockMode.Locked;
         //Cursor.lockState = CursorLockMode.None;
@@ -16,7 +20,7 @@ public class MouseLook : MonoBehaviour
 
     void Update()
     {
-        Tracking();
+        Tracking();        
     }
 
     private void Tracking()
@@ -30,5 +34,20 @@ public class MouseLook : MonoBehaviour
         transform.localRotation = Quaternion.Euler(_xRotation, 0, 0);
         _character.Rotate(Vector3.up * mouseX);
 
+    }
+
+    public GameObject Select_obj()
+    {
+        Vector3 line_Origin = fps_cam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0));
+        Vector3 End_Line = fps_cam.transform.forward * Leigth;
+        Ray R = new Ray(line_Origin, End_Line);
+        Debug.DrawLine(line_Origin, End_Line, Color.black);
+        RaycastHit hit = new RaycastHit();
+        if (Physics.Raycast(R, out hit, Leigth))
+        {
+            GameObject game = hit.collider.gameObject;
+            return game;
+        }
+        return null;
     }
 }

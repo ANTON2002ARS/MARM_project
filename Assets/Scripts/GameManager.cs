@@ -5,22 +5,37 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private Canvas canvas;
-    [SerializeField] private GameObject player;
-    [SerializeField] private MouseLook mouselook;
-    
-    void Update()
+
+    [HideInInspector] public List<Action_build> Status_Action; 
+
+    private int Max_Mistakes = 10;
+    private int _currentMistakes = 0;
+    public int Mistakes
     {
-        if (Input.GetKey(KeyCode.Escape))
+        get => _currentMistakes;
+        set
         {
-            canvas.gameObject.SetActive(true);
-            mouselook.can_rotation = false;
-        }
-        else
-        {
-            canvas.gameObject.SetActive(false);
-            mouselook.can_rotation = true;
+            _currentMistakes = value;
+            if (_currentMistakes >= Max_Mistakes)
+                Full_Test();            
         }
         
+    }
+
+    public static GameManager Instance { get; private set; }
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
+
+    private void Full_Test()
+    { 
+        Debug.Log("Тест провален");
+    }
+    private void Pass_Test()
+    {
+
     }
 }

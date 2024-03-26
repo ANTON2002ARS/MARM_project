@@ -2,18 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class player : MonoBehaviour
+public class Player : MonoBehaviour
 {
+    [SerializeField] private Camera camera_player;
     [SerializeField] private float _speedWalk;
     [SerializeField] private float _gravity;
     [SerializeField] private float _jumpPower;
     [SerializeField] private float _speedRun;
-
+    
     private CharacterController _characterController;
     private Vector3 _walkDirection;
     private Vector3 _velocity;
     private float _speed;
-
+        
     private void Start()
     {
         _speed = _speedWalk;
@@ -28,6 +29,10 @@ public class player : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
         _walkDirection = transform.right * x + transform.forward * z;
+
+        /*if (Input.GetMouseButtonDown(0))
+            Debug.Log(camera_player.GetComponent<MouseLook>().Select_obj().name);*/
+
     }
 
     private void FixedUpdate()
