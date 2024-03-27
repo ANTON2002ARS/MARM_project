@@ -49,7 +49,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -67,7 +67,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5559f418bb198bd46923d6d24f9a9a9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  action_build: {fileID: 0}
+  action_build: {fileID: 11400000, guid: 0dd2ac0b38f32ab46aa9878a2a5641fd, type: 2}
   model_children: {fileID: 2516381416177411466}
 --- !u!1 &2516381416177411466
 GameObject:
