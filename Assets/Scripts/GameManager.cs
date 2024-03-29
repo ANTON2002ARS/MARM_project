@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Camera air_camera;
     [SerializeField] private GameObject player;
     [SerializeField] private Text Status_game;
-
+    [SerializeField] private Canvas Menu;
     [HideInInspector] public List<Action_build> Status_Action; 
 
     private int Max_Mistakes = 10;
@@ -61,15 +61,17 @@ public class GameManager : MonoBehaviour
         {            
             air_camera.enabled = true;
             player.SetActive(false);
+            Menu.gameObject.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
         }
         else
         {
             player.SetActive(true);
             air_camera.enabled = false;
+            Menu.gameObject.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;
         }
-        float delayTime = 0.2f; // Задержка в секундах
+        float delayTime = 0.3f; // Задержка в секундах
         yield return new WaitForSeconds(delayTime);
         /*player.SetActive(!air_camera.enabled);
         air_camera.enabled = player.activeSelf;*/
