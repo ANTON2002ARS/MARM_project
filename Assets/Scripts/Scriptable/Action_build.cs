@@ -6,4 +6,7 @@ using UnityEngine;
 public class Action_build : ScriptableObject
 {
     public string Name_Action;
+    public bool Use_Add_Action;
+    public string Name_Object;
+    public string Use_Object;
 }
