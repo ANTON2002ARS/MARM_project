@@ -5,7 +5,7 @@ using UnityEngine;
 public class Crane_Body : MonoBehaviour
 {
     [SerializeField] private Action_build action_build;
-    [SerializeField] private Animation animation_builds;
+    [SerializeField] private Animator animation_builds;
     private void OnMouseUpAsButton()
     {
         Debug.Log("Choice object: " + this.name);

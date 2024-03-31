@@ -15,9 +15,11 @@ public class Zil_Body : MonoBehaviour
         {
             case 0:
                 animator_builds.Play("Set_ramp_coastal_support_1");
+                GameManager.Instance.part_marm[0].GetComponent<Part_marm>().Show_Span(true);
                 break;
             case 1:
                 animator_builds.Play("Set_span_support_1");
+                GameManager.Instance.part_marm[1].GetComponent<Part_marm>().Show_Span(true);
                 break;
             case 2:
                 animator_builds.Play("Set_span_support_2");
@@ -44,6 +46,9 @@ public class Zil_Body : MonoBehaviour
                 animator_builds.Play("Set_ramp_coastal_support_2");
                 break;
         }
-        GameManager.Instance.Number_Span++;        
+        GameManager.Instance.Number_Span++;
+
+        Debug.Log("Number_Span:" + GameManager.Instance.Number_Span);
+        
     }
 }

@@ -4,16 +4,21 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
-{
-    [SerializeField] private Camera air_camera;
+{   
+    [Header("For Player")]
     [SerializeField] private GameObject player;
-    [SerializeField] private Text Status_game;
+    [SerializeField] private Canvas learn_canvas;
+    [SerializeField] private Text learn_text;
+    [Header("Menu Game")]   
+    [SerializeField] private Camera air_camera;
     [SerializeField] private Canvas Menu;
     [SerializeField] private GameObject image_manual;
-
+    [Header("MARM")]
+    //[SerializeField] private List<GameObject> part_marm;
+    public List<GameObject> part_marm;
     [HideInInspector] public List<Action_build> Status_Action;
     // Обучающий решим включон\\
-    public bool is_learning_Mode = true;
+    public bool is_learning_Mode;
 
     private int _number_span;
     public  int Number_Span // от 0 до 10
@@ -23,7 +28,11 @@ public class GameManager : MonoBehaviour
         {
             _number_span = value;
             if (_number_span > 9)
-                Sheck_Other();           
+            {
+                _number_span = 0;
+                Sheck_Other();  
+            }
+                         
         }
     } 
 
@@ -45,15 +54,13 @@ public class GameManager : MonoBehaviour
     }
 
     public static GameManager Instance { get; private set; }
-
-    private void Awake()
-    {
-        Instance = this;
-    }
+    private void Awake() => Instance = this;
+ 
     private void Start()
     {
         air_camera.enabled = true;
         player.SetActive(false);
+        Close_Learn_Text();
     }
     private  void Update()
     {
@@ -63,10 +70,20 @@ public class GameManager : MonoBehaviour
             {
                 Chenge_View();
                 lastKeyPressTime = Time.time; // Обновите время последнего нажатия клавиши
-            }                
+            }
         }
+        else if (Input.GetKey(KeyCode.E))
+            Close_Learn_Text();       
             
     }
+
+    public void Show_Learn_Text(string text)
+    {
+        learn_canvas.enabled = true;
+        learn_text.text = text;
+    }
+    public void Close_Learn_Text() => learn_canvas.enabled = false;
+   
     // Прповеряем что все детали маста установлены
     private void Sheck_Other()
     {
@@ -76,14 +93,12 @@ public class GameManager : MonoBehaviour
     private void Full_Test()
     {
         Chenge_View();
-        Status_game.text = "Мост не построен";
-        Status_game.color = Color.red;
+        Debug.Log("Мост не построен");        
     }
     private void Pass_Test()
     {
         Chenge_View();
-        Status_game.text = "Мост построен";
-        Status_game.color = Color.green;
+        Debug.Log("Мост построен");        
     }
 
     
@@ -107,16 +122,32 @@ public class GameManager : MonoBehaviour
         air_camera.enabled = player.activeSelf;*/
     }
 
+    public void Start_Test_Mode(bool is_Mode)
+    {
+        foreach (var p in part_marm)
+            if (p != null)
+            {
+                p.GetComponent<Part_marm>().Start_Test_Mode(is_Mode);
+                //p.SetActive(!is_Mode);
+            }                
+       
+        //p.GetComponent<Part_marm>().Start_Test_Mode(is_Mode);            
+
+
+    }
+
     public void Show_marm()
     {
         Chenge_View();
         is_learning_Mode = true;
+        Start_Test_Mode(false);
     }
 
     public void Start_test()
     {
         Chenge_View();
         is_learning_Mode = false;
+        Start_Test_Mode(true);
     }
 
     public void Open_Manual() => image_manual.SetActive(!image_manual.activeSelf);  

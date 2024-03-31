@@ -132,7 +132,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -152,3 +152,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   action_build: {fileID: 11400000, guid: cd2af31163031db4f83e11000880f5cc, type: 2}
   model_children: {fileID: 5783908376183473666}
+  children_additional: []
+  Can_Set: 1
