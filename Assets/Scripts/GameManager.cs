@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     public List<GameObject> part_marm;    
     [HideInInspector] public List<Action_build> Status_Action;
     // Обучающий решим включон\\
-    public bool is_learning_Mode;
+    public bool is_learning_Mode { private set; get; }
 
     private int _number_span;
     public  int Number_Span // от 0 до 10

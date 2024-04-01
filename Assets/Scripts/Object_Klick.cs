@@ -19,30 +19,30 @@ public class Object_Klick : MonoBehaviour
         private set 
         {
             if (!Can_Set) return;
-            model_children.SetActive(value);
-            this.GetComponent<BoxCollider>().isTrigger = !value;
+            Enable_Modeil(value);
             is_set = value; 
         }
         get => is_set;
     }
 
-    public void is_children_madeil(bool can_active)
+    private void Enable_Modeil(bool enable)
     {
-        Can_Set = can_active;
-        Check_Set = can_active;      
+        model_children.SetActive(enable);
+        this.GetComponent<BoxCollider>().isTrigger = !enable;
     }
 
-
+    public void is_children_madeil(bool is_Mode)
+    {
+        Can_Set = !is_Mode;
+        Enable_Modeil(!is_Mode); 
+    }
+    // true = test || false = not test\\
     public void Start_Test_Mode(bool is_Mode)
     {
-        Check_Set = !is_Mode;
-
+        this.Check_Set = !is_Mode;
         foreach (var add in children_additional)
             if(add != null)
-            {
-                Object_Klick k = add.GetComponent<Object_Klick>();
-                k.is_children_madeil(!is_Mode);
-            }                   
+                add.GetComponent<Object_Klick>().is_children_madeil(is_Mode);        
     }
 
     private void OnMouseUpAsButton()
