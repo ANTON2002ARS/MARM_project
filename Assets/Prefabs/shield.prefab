@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2210952120472369807}
   m_Layer: 0
   m_Name: shield
-  m_TagString: Untagged
+  m_TagString: shield
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -69,6 +69,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   action_build: {fileID: 11400000, guid: 0dd2ac0b38f32ab46aa9878a2a5641fd, type: 2}
   model_children: {fileID: 2516381416177411466}
+  children_additional: []
+  Can_Set: 1
 --- !u!1 &2516381416177411466
 GameObject:
   m_ObjectHideFlags: 0

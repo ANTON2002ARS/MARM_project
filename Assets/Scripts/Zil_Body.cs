@@ -9,17 +9,17 @@ public class Zil_Body : MonoBehaviour
     private void OnMouseUpAsButton()
     {
         Debug.Log("Choice object: " + this.name);
-        GameManager.Instance.Status_Action.Add(action_build);
+        if(action_build.Use_Add_Action)
+            GameManager.Instance.Status_Action.Add(action_build);
 
         switch (GameManager.Instance.Number_Span)
         {
             case 0:
                 animator_builds.Play("Set_ramp_coastal_support_1");
-                GameManager.Instance.part_marm[0].GetComponent<Part_marm>().Show_Span(true);
+                //GameManager.Instance.part_marm[0].GetComponent<Part_marm>().Show_Span(true);
                 break;
             case 1:
-                animator_builds.Play("Set_span_support_1");
-                GameManager.Instance.part_marm[1].GetComponent<Part_marm>().Show_Span(true);
+                animator_builds.Play("Set_span_support_1");                
                 break;
             case 2:
                 animator_builds.Play("Set_span_support_2");

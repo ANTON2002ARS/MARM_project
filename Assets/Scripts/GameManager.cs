@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     public List<GameObject> part_marm;    
     [HideInInspector] public List<Action_build> Status_Action;
     // Обучающий решим включон\\
-    public bool is_learning_Mode;
+    public bool is_learning_Mode { private set; get; }
 
     private int _number_span;
     public  int Number_Span // от 0 до 10
@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
             if (_number_span > 9)
             {
                 _number_span = 0;
+                Debug.Log("___MARM is builds___");
                 Sheck_Other();  
             }
                          
@@ -87,7 +88,10 @@ public class GameManager : MonoBehaviour
     // Прповеряем что все детали маста установлены
     private void Sheck_Other()
     {
-
+        foreach (var part in part_marm)
+        {
+            part.GetComponent<Part_marm>().Full_Check_Part_marm();
+        }
     }
 
     private void Full_Test()

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4010661231987248963}
   m_Layer: 0
   m_Name: Earring
-  m_TagString: Untagged
+  m_TagString: earring
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -69,6 +69,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   action_build: {fileID: 11400000, guid: c77be16d14f77604e80c47aeceaf3c41, type: 2}
   model_children: {fileID: 8421047960467621001}
+  children_additional: []
+  Can_Set: 1
 --- !u!1 &4999303042157805992
 GameObject:
   m_ObjectHideFlags: 0
