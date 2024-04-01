@@ -6,13 +6,14 @@ public class Crane_Body : MonoBehaviour
 {
     [SerializeField] private Action_build action_build;
     [SerializeField] private Animator animation_builds;
-
+    
     private void Start() => animation_builds.enabled = false;
 
     private void OnMouseUpAsButton()
     {
         Debug.Log("Choice object: " + this.name);
-        GameManager.Instance.Status_Action.Add(action_build);
+        if (action_build.Use_Add_Action)
+            GameManager.Instance.Status_Action.Add(action_build);
 
         switch (GameManager.Instance.Number_Span)
         {
@@ -48,7 +49,7 @@ public class Crane_Body : MonoBehaviour
                 animation_builds.Play("Set_Manipulator_coastal_support_2");
                 break;
         }
-
     }
+    public void Enable_Animation(bool is_enable) => animation_builds.enabled = is_enable;
 
 }

@@ -67,7 +67,7 @@ GameObject:
   - component: {fileID: 1083993461747459065}
   m_Layer: 0
   m_Name: pin_prefab
-  m_TagString: Untagged
+  m_TagString: pin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,6 +123,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   action_build: {fileID: 11400000, guid: ea2002710da44bd4eb8595b8919e94a7, type: 2}
   model_children: {fileID: 1097526298865129696}
+  children_additional: []
+  Can_Set: 1
 --- !u!1001 &5820943323386571742
 PrefabInstance:
   m_ObjectHideFlags: 0
