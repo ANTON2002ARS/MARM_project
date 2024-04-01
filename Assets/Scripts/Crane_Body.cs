@@ -6,6 +6,9 @@ public class Crane_Body : MonoBehaviour
 {
     [SerializeField] private Action_build action_build;
     [SerializeField] private Animator animation_builds;
+
+    private void Start() => animation_builds.enabled = false;
+
     private void OnMouseUpAsButton()
     {
         Debug.Log("Choice object: " + this.name);
@@ -14,6 +17,7 @@ public class Crane_Body : MonoBehaviour
         switch (GameManager.Instance.Number_Span)
         {
             case 0:
+                animation_builds.enabled = true;
                 animation_builds.Play("Set_Manipulator_coastal_support_1");
                 break;
             case 1:

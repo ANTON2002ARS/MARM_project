@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject image_manual;
     [Header("MARM")]
     //[SerializeField] private List<GameObject> part_marm;
-    public List<GameObject> part_marm;
+    public List<GameObject> part_marm;    
     [HideInInspector] public List<Action_build> Status_Action;
     // Обучающий решим включон\\
     public bool is_learning_Mode;
@@ -130,10 +130,8 @@ public class GameManager : MonoBehaviour
                 p.GetComponent<Part_marm>().Start_Test_Mode(is_Mode);
                 //p.SetActive(!is_Mode);
             }                
-       
-        //p.GetComponent<Part_marm>().Start_Test_Mode(is_Mode);            
-
-
+               
+        //p.GetComponent<Part_marm>().Start_Test_Mode(is_Mode); 
     }
 
     public void Show_marm()

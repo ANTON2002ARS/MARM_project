@@ -14,8 +14,8 @@ public class Object_Klick : MonoBehaviour
     public bool Can_Set = true;
     public void Active_Body_Object(bool _is_off) 
     {
-        if (Can_Set != true)
-            return;            
+       /* if (Can_Set != true)
+            return; */           
         model_children.SetActive(_is_off);
         this.GetComponent<BoxCollider>().isTrigger = !_is_off;
     }
@@ -34,7 +34,7 @@ public class Object_Klick : MonoBehaviour
 
         if (GameManager.Instance.is_learning_Mode)
         {
-            GameManager.Instance.Show_Learn_Text(action_build.Name_Action);
+            GameManager.Instance.Show_Learn_Text(action_build.Name_Object + "\n" + action_build.Use_Object);
         }
 
         foreach (var item in children_additional)

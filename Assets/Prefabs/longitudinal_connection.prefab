@@ -93,6 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6853211936591232596}
   - component: {fileID: 1220829778666303547}
+  - component: {fileID: 3933186000320370652}
   m_Layer: 0
   m_Name: longitudinal_connection
   m_TagString: Untagged
@@ -130,3 +131,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   action_build: {fileID: 11400000, guid: bc3c5630d4d358e4b8114f4fce8d0506, type: 2}
   model_children: {fileID: 3016678095193087031}
+  children_additional: []
+  Can_Set: 1
+--- !u!65 &3933186000320370652
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6075548719079285998}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 43.433723, y: 0.45971417, z: 0.5289265}
+  m_Center: {x: 19.018497, y: -0.016831458, z: -0.12642743}
