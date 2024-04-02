@@ -15,7 +15,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Canvas Menu;
     [SerializeField] private GameObject image_manual;
     [Header("MARM")]
-    //[SerializeField] private List<GameObject> part_marm;
     public List<GameObject> part_marm;
     [SerializeField] private GameObject River;
     [SerializeField] private GameObject Crane;
@@ -24,6 +23,7 @@ public class GameManager : MonoBehaviour
     // Обучающий решим включон\\
     public bool is_learning_Mode { private set; get; }
 
+    // Номер пролета которые в данный момент ставиться \\
     private int _number_span;
     public  int Number_Span // от 0 до 10
     {
@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
 
     private float delay = 1.2f; // Установите задержку в секундах
     private float lastKeyPressTime; // Время последнего нажатия клавиши
-
+    // Для отслеживание ошибок \\
     private int Max_Mistakes = 10;
     private int _currentMistakes = 0;
     public int Mistakes
@@ -74,8 +74,9 @@ public class GameManager : MonoBehaviour
             if (Time.time - lastKeyPressTime > delay)
             {
                 Chenge_View();
-                lastKeyPressTime = Time.time; // Обновите время последнего нажатия клавиши
-            }
+                // Обновите время последнего нажатия клавиши
+                lastKeyPressTime = Time.time; 
+            }   
         }
         else if (Input.GetKey(KeyCode.E))
             Close_Learn_Text();       
@@ -101,9 +102,7 @@ public class GameManager : MonoBehaviour
     private void Sheck_Other()
     {
         foreach (var part in part_marm)
-        {
-            part.GetComponent<Part_marm>().Full_Check_Part_marm();
-        }
+            part.GetComponent<Part_marm>().Full_Check_Part_marm();        
     }
 
     private void Full_Test()
