@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &61756159 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 226236798085194443, guid: c910c75b2ca1eed42997dab14e6610de, type: 3}
+  m_PrefabInstance: {fileID: 5592039683336873902}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &65331897
 GameObject:
   m_ObjectHideFlags: 0
@@ -1382,6 +1387,41 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4091897721707008785, guid: dbc47eb48e5c70c45a73b65e73fa5b54, type: 3}
   m_PrefabInstance: {fileID: 407404624}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &437372553
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 437372554}
+  m_Layer: 5
+  m_Name: forder_image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &437372554
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 437372553}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2076401346}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -54, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &491202694
 GameObject:
   m_ObjectHideFlags: 0
@@ -1531,6 +1571,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 491202694}
   m_CullTransparentMesh: 1
+--- !u!1 &551315583 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 458232555964895203, guid: 69a5275e5d9b8c44d913737a57869aef, type: 3}
+  m_PrefabInstance: {fileID: 3524018474933440436}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &560474399
 GameObject:
   m_ObjectHideFlags: 0
@@ -2019,6 +2064,7 @@ MonoBehaviour:
   player: {fileID: 1488904298}
   learn_canvas: {fileID: 2076401349}
   learn_text: {fileID: 129680059}
+  forder: {fileID: 437372553}
   air_camera: {fileID: 65331899}
   Menu: {fileID: 824528283}
   image_manual: {fileID: 1390454783}
@@ -2033,6 +2079,9 @@ MonoBehaviour:
   - {fileID: 906644177}
   - {fileID: 113538714}
   - {fileID: 124347331}
+  River: {fileID: 250965317}
+  Crane: {fileID: 551315583}
+  Zil: {fileID: 61756159}
   Status_Action: []
 --- !u!4 &880814035
 Transform:
@@ -4416,6 +4465,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1749395923}
+  - {fileID: 437372554}
   m_Father: {fileID: 963194228}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
