@@ -6,8 +6,12 @@ public class Crane_Body : MonoBehaviour
 {
     [SerializeField] private Action_build action_build;
     [SerializeField] private Animator animation_builds;
-    
-    private void Start() => animation_builds.enabled = false;
+    private Vector3 Start_postion;
+    private void Start() 
+    {
+        Start_postion = this.transform.position;
+        animation_builds.enabled = false; 
+    }
 
     private void OnMouseUpAsButton()
     {
@@ -50,6 +54,8 @@ public class Crane_Body : MonoBehaviour
                 break;
         }
     }
+
+    public void Set_Crane_to_End() => this.transform.position = Start_postion;
     public void Enable_Animation(bool is_enable) => animation_builds.enabled = is_enable;
 
 }

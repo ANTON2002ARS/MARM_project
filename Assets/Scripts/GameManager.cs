@@ -9,17 +9,21 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private Canvas learn_canvas;
     [SerializeField] private Text learn_text;
+    [SerializeField] private GameObject forder;
     [Header("Menu Game")]   
     [SerializeField] private Camera air_camera;
     [SerializeField] private Canvas Menu;
     [SerializeField] private GameObject image_manual;
     [Header("MARM")]
-    //[SerializeField] private List<GameObject> part_marm;
-    public List<GameObject> part_marm;    
+    public List<GameObject> part_marm;
+    [SerializeField] private GameObject River;
+    [SerializeField] private GameObject Crane;
+    [SerializeField] private GameObject Zil;
     [HideInInspector] public List<Action_build> Status_Action;
     // Обучающий решим включон\\
-    public bool is_learning_Mode;
+    public bool is_learning_Mode { private set; get; }
 
+    // Номер пролета которые в данный момент ставиться \\
     private int _number_span;
     public  int Number_Span // от 0 до 10
     {
@@ -39,7 +43,7 @@ public class GameManager : MonoBehaviour
 
     private float delay = 1.2f; // Установите задержку в секундах
     private float lastKeyPressTime; // Время последнего нажатия клавиши
-
+    // Для отслеживание ошибок \\
     private int Max_Mistakes = 10;
     private int _currentMistakes = 0;
     public int Mistakes
@@ -70,18 +74,27 @@ public class GameManager : MonoBehaviour
             if (Time.time - lastKeyPressTime > delay)
             {
                 Chenge_View();
-                lastKeyPressTime = Time.time; // Обновите время последнего нажатия клавиши
-            }
+                // Обновите время последнего нажатия клавиши
+                lastKeyPressTime = Time.time; 
+            }   
         }
         else if (Input.GetKey(KeyCode.E))
             Close_Learn_Text();       
             
     }
 
-    public void Show_Learn_Text(string text)
+    public void Show_Learn_Text_Image(string text, GameObject image_madel)
     {
         learn_canvas.enabled = true;
         learn_text.text = text;
+        if (image_madel == null)
+            return;
+     
+        if(forder.transform.childCount == 1)
+            Destroy(forder.transform.GetChild(0).gameObject);
+        GameObject Image = Instantiate(image_madel, transform.position, Quaternion.identity);
+        Image.transform.SetParent(forder.transform, false);
+
     }
     public void Close_Learn_Text() => learn_canvas.enabled = false;
    
@@ -89,9 +102,7 @@ public class GameManager : MonoBehaviour
     private void Sheck_Other()
     {
         foreach (var part in part_marm)
-        {
-            part.GetComponent<Part_marm>().Full_Check_Part_marm();
-        }
+            part.GetComponent<Part_marm>().Full_Check_Part_marm();        
     }
 
     private void Full_Test()
@@ -130,12 +141,12 @@ public class GameManager : MonoBehaviour
     {
         foreach (var p in part_marm)
             if (p != null)
-            {
                 p.GetComponent<Part_marm>().Start_Test_Mode(is_Mode);
-                //p.SetActive(!is_Mode);
-            }                
-               
-        //p.GetComponent<Part_marm>().Start_Test_Mode(is_Mode); 
+
+        Number_Span = 0;
+        Crane.GetComponent<Crane_Body>().Set_Crane_to_End();
+        Zil.GetComponent<Zil_Body>().Set_Zil_to_End(); 
+       
     }
 
     public void Show_marm()
@@ -152,8 +163,9 @@ public class GameManager : MonoBehaviour
         Start_Test_Mode(true);
     }
 
-    public void Open_Manual() => image_manual.SetActive(!image_manual.activeSelf);  
+    public void Open_Manual() => image_manual.SetActive(!image_manual.activeSelf);
 
+    public void Show_River() => River.SetActive(!River.activeSelf);
     public void Restart_game()
     {
         foreach (var item in Status_Action)

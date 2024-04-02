@@ -6,6 +6,10 @@ public class Zil_Body : MonoBehaviour
 {
     [SerializeField] private Action_build action_build;
     [SerializeField ]private Animator animator_builds;
+    private Vector3 Start_postion;
+
+    private void Start() => Start_postion = this.transform.position;
+    
     private void OnMouseUpAsButton()
     {
         Debug.Log("Choice object: " + this.name);
@@ -51,4 +55,6 @@ public class Zil_Body : MonoBehaviour
         Debug.Log("Number_Span:" + GameManager.Instance.Number_Span);
         
     }
+
+    public void Set_Zil_to_End() => this.transform.position = Start_postion;
 }
