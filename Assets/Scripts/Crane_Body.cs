@@ -16,6 +16,8 @@ public class Crane_Body : MonoBehaviour
     private void OnMouseUpAsButton()
     {
         Debug.Log("Choice object: " + this.name);
+        if (GameManager.Instance.is_learning_Mode)
+            return;
         if (action_build.Use_Add_Action)
             GameManager.Instance.Status_Action.Add(action_build);
 
