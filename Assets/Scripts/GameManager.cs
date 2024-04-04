@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public List<Action_build> Status_Action;
     // Обучающий решим включон\\
     public bool is_learning_Mode { private set; get; }
+   public bool end_animation_test { private set; get; }
 
     // Номер пролета которые в данный момент ставиться \\
     private int _number_span;
@@ -34,10 +35,11 @@ public class GameManager : MonoBehaviour
             if (_number_span > 9)
             {
                 _number_span = 0;
+                end_animation_test = true;
+                Show_Learn_Text_Image("Все аппарели и пролеты установлены", null);
                 Debug.Log("___MARM is builds___");
                 Sheck_Other();  
-            }
-                         
+            }                         
         }
     } 
 
@@ -68,7 +70,7 @@ public class GameManager : MonoBehaviour
         Close_Learn_Text();
     }
     private  void Update()
-    {
+    {        
         if (Input.GetKey(KeyCode.Escape))
         {
             if (Time.time - lastKeyPressTime > delay)
@@ -101,6 +103,7 @@ public class GameManager : MonoBehaviour
     // Прповеряем что все детали маста установлены
     private void Sheck_Other()
     {
+
         foreach (var part in part_marm)
             part.GetComponent<Part_marm>().Full_Check_Part_marm();        
     }
@@ -139,12 +142,12 @@ public class GameManager : MonoBehaviour
 
     public void Start_Test_Mode(bool is_Mode)
     {
-        Crane.GetComponent<Crane_Body>().Enable_Animation(is_Mode);
+        Crane.GetComponent<Crane_Body>().Enable_Animation(!is_Mode);
         foreach (var p in part_marm)
             if (p != null)
                 p.GetComponent<Part_marm>().Start_Test_Mode(is_Mode);
         Active_Part(is_Mode);
-
+        end_animation_test = is_Mode;
         Number_Span = 0;
         Crane.GetComponent<Crane_Body>().Set_Crane_to_End();
         Zil.GetComponent<Zil_Body>().Set_Zil_to_End(); 
@@ -154,9 +157,7 @@ public class GameManager : MonoBehaviour
     private void Active_Part(bool is_mode)
     {
         foreach (var item in part_marm)
-        {
-            item.SetActive(!is_mode);
-        }
+            item.SetActive(!is_mode);        
     }
 
     public void Show_marm()

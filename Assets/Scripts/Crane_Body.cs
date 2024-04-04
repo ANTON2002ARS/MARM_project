@@ -18,6 +18,8 @@ public class Crane_Body : MonoBehaviour
         Debug.Log("Choice object: " + this.name);
         if (GameManager.Instance.is_learning_Mode)
             return;
+        if (Zil_Body.Instance_Zil.Crane_in_position)
+            return;
         if (action_build.Use_Add_Action)
             GameManager.Instance.Status_Action.Add(action_build);
 
@@ -55,6 +57,7 @@ public class Crane_Body : MonoBehaviour
                 animation_builds.Play("Set_Manipulator_coastal_support_2");
                 break;
         }
+        Zil_Body.Instance_Zil.Crane_in_position = true;
     }
 
     public void Set_Crane_to_End() => this.transform.position = Start_postion;
