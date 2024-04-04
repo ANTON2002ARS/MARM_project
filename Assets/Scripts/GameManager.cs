@@ -139,14 +139,24 @@ public class GameManager : MonoBehaviour
 
     public void Start_Test_Mode(bool is_Mode)
     {
+        Crane.GetComponent<Crane_Body>().Enable_Animation(is_Mode);
         foreach (var p in part_marm)
             if (p != null)
                 p.GetComponent<Part_marm>().Start_Test_Mode(is_Mode);
+        Active_Part(is_Mode);
 
         Number_Span = 0;
         Crane.GetComponent<Crane_Body>().Set_Crane_to_End();
         Zil.GetComponent<Zil_Body>().Set_Zil_to_End(); 
        
+    }
+
+    private void Active_Part(bool is_mode)
+    {
+        foreach (var item in part_marm)
+        {
+            item.SetActive(!is_mode);
+        }
     }
 
     public void Show_marm()

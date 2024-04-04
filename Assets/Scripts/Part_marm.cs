@@ -37,7 +37,7 @@ public class Part_marm : MonoBehaviour
         Test_Mode_Activetion(pin, is_Mode);
         Test_Mode_Activetion(earring, is_Mode);
         
-        Show_Span(!is_Mode);
+        //Show_Span(!is_Mode);
     }
 
     public void Show_Span(bool active)
