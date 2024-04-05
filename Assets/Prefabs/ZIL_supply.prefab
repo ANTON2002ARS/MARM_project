@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4001617881147576602}
   - component: {fileID: 8828669468943001585}
+  - component: {fileID: 1948239422148068727}
   - component: {fileID: 662753644521441732}
   m_Layer: 0
   m_Name: ZIL_supply
@@ -55,6 +56,27 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 10, y: 5.6451273, z: 47}
   m_Center: {x: 0, y: 5.8225636, z: 0}
+--- !u!65 &1948239422148068727
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 226236798085194443}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 13.053752, y: 18.634665, z: 18.514973}
+  m_Center: {x: 0.07690299, y: 8.817332, z: 13.671965}
 --- !u!114 &662753644521441732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,6 +91,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   action_build: {fileID: 11400000, guid: 1f3ffb6613945af4aa66bebb6af8ed74, type: 2}
   animator_builds: {fileID: 0}
+  Crane_in_position: 0
 --- !u!1 &1577632962141829320
 GameObject:
   m_ObjectHideFlags: 0
