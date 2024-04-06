@@ -9,7 +9,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float _gravity;
     [SerializeField] private float _jumpPower;
     [SerializeField] private float _speedRun;
-    
+    [SerializeField] private GameObject Boat;
+
     private CharacterController _characterController;
     private Vector3 _walkDirection;
     private Vector3 _velocity;
@@ -69,4 +70,6 @@ public class Player : MonoBehaviour
     {
         _characterController.height = canSit ? 1f : 2f;
     }
+
+    public void Show_Boat(bool is_show) => Boat.SetActive(is_show);
 }
