@@ -20,7 +20,8 @@ public class MouseLook : MonoBehaviour
 
     void Update()
     {
-        Tracking();        
+        Tracking();
+        _sensitivity = GameManager.Instance.Speed_Mouse;
     }
 
     private void Tracking()

@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Camera air_camera;
     [SerializeField] private Canvas Menu;
     [SerializeField] private GameObject image_manual;
+    [SerializeField] private Scrollbar scrollbar;
     [Header("MARM")]
     public List<GameObject> part_marm;
     [SerializeField] private GameObject River;
@@ -21,8 +22,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject Zil;
     [HideInInspector] public List<Action_build> Status_Action;
     // Обучающий решим включон\\
-    public bool is_learning_Mode { private set; get; }
-   public bool end_animation_test { private set; get; }
+    public bool is_learning_Mode { private set; get; }   
+    public bool end_animation_test { private set; get; }
+    [HideInInspector] public float Speed_Mouse;
 
     // Номер пролета которые в данный момент ставиться \\
     private int _number_span;
@@ -36,6 +38,7 @@ public class GameManager : MonoBehaviour
             {
                 _number_span = 0;
                 end_animation_test = true;
+                Crane.GetComponent<Crane_Body>().Start_End_build();
                 Show_Learn_Text_Image("Все аппарели и пролеты установлены", null);
                 Debug.Log("___MARM is builds___");
                 Sheck_Other();  
@@ -65,6 +68,7 @@ public class GameManager : MonoBehaviour
  
     private void Start()
     {
+        Speed_Mouse = 250;
         air_camera.enabled = true;
         player.SetActive(false);
         Close_Learn_Text();
@@ -160,6 +164,15 @@ public class GameManager : MonoBehaviour
             item.SetActive(!is_mode);        
     }
 
+    public void Set_Speed_Mouse()
+    {
+        float scr = scrollbar.value * 1000;
+        if (scr < 10)
+            Speed_Mouse = 10;
+        else 
+            Speed_Mouse = scr;
+        Debug.Log(scr + " == " + Speed_Mouse);
+    }
     public void Show_marm()
     {
         Chenge_View();
