@@ -360,11 +360,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5526584433752830299, guid: f406780a22e0391418b276edf8ca2fd1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -48.4
+      value: -48.43
       objectReference: {fileID: 0}
     - target: {fileID: 5526584433752830299, guid: f406780a22e0391418b276edf8ca2fd1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.8
+      value: -0.05
       objectReference: {fileID: 0}
     - target: {fileID: 5526584433752830299, guid: f406780a22e0391418b276edf8ca2fd1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3651,6 +3651,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: APPAREL_BANK (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2913017032817040260, guid: 33ba0be0cfc29f349898914b59023349, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6907403887717906499, guid: 33ba0be0cfc29f349898914b59023349, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7395384979042366406, guid: 33ba0be0cfc29f349898914b59023349, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.55
@@ -3709,7 +3717,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8478977476791778311, guid: 33ba0be0cfc29f349898914b59023349, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -12.4
+      value: -11.27
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
