@@ -52,25 +52,38 @@ public class Part_marm : MonoBehaviour
         }
     }
 
-    public void Full_Check_Part_marm()
+    public string Full_Check_Part_marm()
     {
-        Debug.Log("Number Span: " + is_Number_Span);
-        Check_Set_Models(wheel_shield);
-        Check_Set_Models(shield);
-        Check_Set_Models(lanyatd);
-        Check_Set_Models(pin);
-        Check_Set_Models(earring);
+        string str = "У пролета номера " + is_Number_Span + " не установлены следующие части: "; 
+        Debug.Log(str);
+        str += Check_Set_Models(wheel_shield);
+        str += Check_Set_Models(shield);
+        str += Check_Set_Models(lanyatd);
+        str += Check_Set_Models(pin);
+        str += Check_Set_Models(earring);
+        return str + "\n";
     }
-    private void Check_Set_Models(List<GameObject> models)
+    private string Check_Set_Models(List<GameObject> models)
     {
         foreach (var model in models)
         {
             if(!model.GetComponent<Object_Klick>().Check_Set)
             {
-                Debug.Log("Not set: "+ model.tag);
-                //return;
+                string str = "Не установлена: " + model.tag;
+                switch (model.tag)
+                {
+                    case "pin":
+
+                        break;
+
+                    default:
+                        break;
+                }
+                Debug.Log(str);
+                return str;
             }
         }
+        return null;
     }
 
 

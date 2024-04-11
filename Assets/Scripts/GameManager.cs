@@ -70,7 +70,14 @@ public class GameManager : MonoBehaviour
         Close_Learn_Text();
     }
     private  void Update()
-    {        
+    {
+        if (Input.GetKeyDown(KeyCode.KeypadEnter))
+        {
+            if (end_animation_test)
+            {
+
+            }
+        }
         if (Input.GetKey(KeyCode.Escape))
         {
             if (Time.time - lastKeyPressTime > delay)
