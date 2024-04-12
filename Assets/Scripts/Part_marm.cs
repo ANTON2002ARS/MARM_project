@@ -55,7 +55,7 @@ public class Part_marm : MonoBehaviour
     public string Full_Check_Part_marm()
     {
         string str = "У пролета номера " + is_Number_Span + " не установлены следующие части: "; 
-        Debug.Log(str);
+        Debug.Log(str); 
         str += Check_Set_Models(wheel_shield);
         str += Check_Set_Models(shield);
         str += Check_Set_Models(lanyatd);
@@ -69,14 +69,29 @@ public class Part_marm : MonoBehaviour
         {
             if(!model.GetComponent<Object_Klick>().Check_Set)
             {
-                string str = "Не установлена: " + model.tag;
+                string str = "Не установлен: ";
                 switch (model.tag)
                 {
-                    case "pin":
-
+                    case "wheel":
+                        str += "колесоотбой";
                         break;
-
+                    case "ralling_stand":
+                        str += "перильное ограждение";
+                        break;
+                    case "pin":
+                        str += "анкерный свай";
+                        break;
+                    case "lanyard":
+                        str += "талреп";
+                        break;
+                    case "earring":
+                        str += "серьга";
+                        break;                    
+                    case "shield":
+                        str += "деформационный щит";
+                        break;                    
                     default:
+                        Debug.Log("Tag Not faind");
                         break;
                 }
                 Debug.Log(str);

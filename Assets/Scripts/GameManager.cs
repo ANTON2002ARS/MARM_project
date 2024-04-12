@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Camera air_camera;
     [SerializeField] private Canvas Menu;
     [SerializeField] private GameObject image_manual;
+    [SerializeField] private Scrollbar scrollbar;
+    public float speed_mouse;
     [Header("MARM")]
     public List<GameObject> part_marm;
     [SerializeField] private GameObject River;
@@ -22,8 +24,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public List<Action_build> Status_Action;
     // Обучающий решим включон\\
     public bool is_learning_Mode { private set; get; }
-   public bool end_animation_test { private set; get; }
-
+    public bool end_animation_test { private set; get; }
+    public bool Is_Open_Menu;
     // Номер пролета которые в данный момент ставиться \\
     private int _number_span;
     public  int Number_Span // от 0 до 10
@@ -37,8 +39,7 @@ public class GameManager : MonoBehaviour
                 _number_span = 0;
                 end_animation_test = true;
                 Show_Learn_Text_Image("Все аппарели и пролеты установлены", null);
-                Debug.Log("___MARM is builds___");
-                Sheck_Other();  
+                Debug.Log("___MARM is builds___");                
             }                         
         }
     } 
@@ -56,8 +57,7 @@ public class GameManager : MonoBehaviour
             _currentMistakes = value;
             if (_currentMistakes >= Max_Mistakes)
                 Full_Test();            
-        }
-        
+        }        
     }
 
     public static GameManager Instance { get; private set; }
@@ -65,17 +65,19 @@ public class GameManager : MonoBehaviour
  
     private void Start()
     {
+        speed_mouse = 250;
         air_camera.enabled = true;
         player.SetActive(false);
         Close_Learn_Text();
     }
     private  void Update()
     {
-        if (Input.GetKeyDown(KeyCode.KeypadEnter))
+        if (Input.GetKeyDown(KeyCode.Return)|| Input.GetKeyDown(KeyCode.KeypadEnter))
         {
+            Debug.Log("Enter");
             if (end_animation_test)
             {
-
+                Sheck_Other();
             }
         }
         if (Input.GetKey(KeyCode.Escape))
@@ -90,6 +92,13 @@ public class GameManager : MonoBehaviour
         else if (Input.GetKey(KeyCode.E))
             Close_Learn_Text();       
             
+    }
+
+    public void Speed_Cheng()
+    {
+        float a = scrollbar.value * 1000;
+
+        speed_mouse = a;
     }
 
     public void Show_Learn_Text_Image(string text, GameObject image_madel)
@@ -110,9 +119,10 @@ public class GameManager : MonoBehaviour
     // Прповеряем что все детали маста установлены
     private void Sheck_Other()
     {
-
+        string status_text = "Не установлены части \n";
         foreach (var part in part_marm)
-            part.GetComponent<Part_marm>().Full_Check_Part_marm();        
+            status_text += part.GetComponent<Part_marm>().Full_Check_Part_marm();
+        Show_Learn_Text_Image(status_text, null);
     }
 
     private void Full_Test()
@@ -122,8 +132,7 @@ public class GameManager : MonoBehaviour
     }
     private void Pass_Test()
     {
-        Chenge_View();
-        Debug.Log("Мост построен");        
+        
     }
 
     
@@ -133,6 +142,7 @@ public class GameManager : MonoBehaviour
         {            
             air_camera.enabled = true;
             player.SetActive(false);
+            Is_Open_Menu = true;
             Menu.gameObject.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
         }
@@ -140,6 +150,7 @@ public class GameManager : MonoBehaviour
         {
             player.SetActive(true);
             air_camera.enabled = false;
+            Is_Open_Menu = false;
             Menu.gameObject.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;
         }        
