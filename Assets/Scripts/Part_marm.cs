@@ -43,8 +43,7 @@ public class Part_marm : MonoBehaviour
     public void Show_Span(bool active)
     {
         foreach (var s in span)
-            s.SetActive(active);        
-
+            s.SetActive(active);
         foreach (var l in longitudinal_connection)
         {
             if(l !=null)
@@ -52,15 +51,32 @@ public class Part_marm : MonoBehaviour
         }
     }
 
+    public bool Check_Pin()
+    {
+        if (pin.Count == 0)
+            return true;
+        foreach (var anchors in pin)
+        {
+            if (!anchors.GetComponent<Object_Klick>().Is_Active_Model_Children())
+            {
+                Debug.Log("Not Anchors ");
+                return false;
+            }                
+        }
+        return true;
+    }
     public string Full_Check_Part_marm()
     {
-        string str = "У пролета номера " + is_Number_Span + " не установлены следующие части: "; 
+        string str = "У пролета номера " + is_Number_Span + " не установлены следующие части: ";
+        int str_long = str.Length;
         Debug.Log(str); 
         str += Check_Set_Models(wheel_shield);
         str += Check_Set_Models(shield);
         str += Check_Set_Models(lanyatd);
         str += Check_Set_Models(pin);
         str += Check_Set_Models(earring);
+        if (str_long == str.Length)
+            return "У пролета номера " + is_Number_Span + " установлены все части " + "\n";
         return str + "\n";
     }
     private string Check_Set_Models(List<GameObject> models)
@@ -73,22 +89,22 @@ public class Part_marm : MonoBehaviour
                 switch (model.tag)
                 {
                     case "wheel":
-                        str += "колесоотбой";
+                        str += "колесоотбой ";
                         break;
                     case "ralling_stand":
-                        str += "перильное ограждение";
+                        str += "перильное ограждение ";
                         break;
                     case "pin":
-                        str += "анкерный свай";
+                        str += "анкерный свай ";
                         break;
                     case "lanyard":
-                        str += "талреп";
+                        str += "талреп ";
                         break;
                     case "earring":
-                        str += "серьга";
+                        str += "серьга ";
                         break;                    
                     case "shield":
-                        str += "деформационный щит";
+                        str += "деформационный щит ";
                         break;                    
                     default:
                         Debug.Log("Tag Not faind");

@@ -66,5 +66,9 @@ public class Zil_Body : MonoBehaviour
         
     }
 
-    public void Set_Zil_to_End() => this.transform.position = Start_postion;
+    public void Set_Zil_to_End()
+    {
+        this.transform.position = Start_postion; 
+        Crane_in_position = false;
+    }
 }

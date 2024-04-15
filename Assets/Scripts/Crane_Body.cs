@@ -16,15 +16,15 @@ public class Crane_Body : MonoBehaviour
     private void OnMouseUpAsButton()
     {
         Debug.Log("Choice object: " + this.name);
-
         if (GameManager.Instance.Is_Open_Menu)
             return;
         if (GameManager.Instance.is_learning_Mode)
-            return;
+            return;             
         if (Zil_Body.Instance_Zil.Crane_in_position)
             return;
-        if (action_build.Use_Add_Action)
-            GameManager.Instance.Status_Action.Add(action_build);
+
+        /*if (action_build.Use_Add_Action)
+            GameManager.Instance.Status_Action.Add(action_build);*/
 
         switch (GameManager.Instance.Number_Span)
         {
@@ -60,10 +60,15 @@ public class Crane_Body : MonoBehaviour
                 animation_builds.Play("Set_Manipulator_coastal_support_2");
                 break;
         }
-        Zil_Body.Instance_Zil.Crane_in_position = true;
+        Zil_Body.Instance_Zil.Crane_in_position = true;        
     }
 
     public void Set_Crane_to_End() => this.transform.position = Start_postion;
-    public void Enable_Animation(bool is_enable) => animation_builds.enabled = is_enable;
-
+    public void Enable_Animation(bool is_enable) 
+    {
+        animation_builds.StopPlayback();
+        Debug.Log("Enable_Animation: " + is_enable);
+        animation_builds.enabled = is_enable;
+      
+    }
 }

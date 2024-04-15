@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject Crane;
     [SerializeField] private GameObject Zil;
     [HideInInspector] public List<Action_build> Status_Action;
-    // Обучающий решим включон\\
+    // Обучающий решим включен\\
     public bool is_learning_Mode { private set; get; }
     public bool end_animation_test { private set; get; }
     public bool Is_Open_Menu;
@@ -33,12 +33,12 @@ public class GameManager : MonoBehaviour
         get => _number_span;
         set
         {
-            _number_span = value;
+            _number_span = value;           
             if (_number_span > 9)
             {
                 _number_span = 0;
                 end_animation_test = true;
-                Show_Learn_Text_Image("Все аппарели и пролеты установлены", null);
+                Show_Learn_Text_Image("Все аппарели и пролеты установлены \n Для проверки, что все детали установлены, нажать Enter", null);
                 Debug.Log("___MARM is builds___");                
             }                         
         }
@@ -49,22 +49,12 @@ public class GameManager : MonoBehaviour
     // Для отслеживание ошибок \\
     private int Max_Mistakes = 10;
     private int _currentMistakes = 0;
-    public int Mistakes
-    {
-        get => _currentMistakes;
-        set
-        {
-            _currentMistakes = value;
-            if (_currentMistakes >= Max_Mistakes)
-                Full_Test();            
-        }        
-    }
-
+    public int Mistakes{ get => _currentMistakes; set => _currentMistakes = value; }
     public static GameManager Instance { get; private set; }
     private void Awake() => Instance = this;
  
     private void Start()
-    {
+    {       
         speed_mouse = 250;
         air_camera.enabled = true;
         player.SetActive(false);
@@ -73,12 +63,9 @@ public class GameManager : MonoBehaviour
     private  void Update()
     {
         if (Input.GetKeyDown(KeyCode.Return)|| Input.GetKeyDown(KeyCode.KeypadEnter))
-        {
-            Debug.Log("Enter");
+        {            
             if (end_animation_test)
-            {
-                Sheck_Other();
-            }
+                Sheck_Other();          
         }
         if (Input.GetKey(KeyCode.Escape))
         {
@@ -97,7 +84,6 @@ public class GameManager : MonoBehaviour
     public void Speed_Cheng()
     {
         float a = scrollbar.value * 1000;
-
         speed_mouse = a;
     }
 
@@ -124,18 +110,7 @@ public class GameManager : MonoBehaviour
             status_text += part.GetComponent<Part_marm>().Full_Check_Part_marm();
         Show_Learn_Text_Image(status_text, null);
     }
-
-    private void Full_Test()
-    {
-        Chenge_View();
-        Debug.Log("Мост не построен");        
-    }
-    private void Pass_Test()
-    {
         
-    }
-
-    
     private void Chenge_View()
     {        
         if (player.activeSelf)
@@ -160,22 +135,25 @@ public class GameManager : MonoBehaviour
 
     public void Start_Test_Mode(bool is_Mode)
     {
-        Crane.GetComponent<Crane_Body>().Enable_Animation(!is_Mode);
+        if(!is_Mode)
+            Crane.GetComponent<Crane_Body>().Enable_Animation(is_Mode);       
+        Crane.GetComponent<Crane_Body>().Set_Crane_to_End();
+        Zil.GetComponent<Zil_Body>().Set_Zil_to_End();
+        Active_Part(is_Mode);
         foreach (var p in part_marm)
             if (p != null)
-                p.GetComponent<Part_marm>().Start_Test_Mode(is_Mode);
-        Active_Part(is_Mode);
+                p.GetComponent<Part_marm>().Start_Test_Mode(is_Mode);        
         end_animation_test = is_Mode;
-        Number_Span = 0;
-        Crane.GetComponent<Crane_Body>().Set_Crane_to_End();
-        Zil.GetComponent<Zil_Body>().Set_Zil_to_End(); 
-       
+        Number_Span = 0;  
     }
 
     private void Active_Part(bool is_mode)
     {
         foreach (var item in part_marm)
-            item.SetActive(!is_mode);        
+        {
+            Debug.Log("Active_Part: " + is_mode);
+            item.SetActive(!is_mode);
+        }            
     }
 
     public void Show_marm()
