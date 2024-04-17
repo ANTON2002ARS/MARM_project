@@ -14,6 +14,7 @@ public class Engineering_Intelligence : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log("Start Engineering_Intelligence");
         Add_Action_point_installation();
         Add_Action_check_deep();
     }
@@ -22,10 +23,10 @@ public class Engineering_Intelligence : MonoBehaviour
     {
         foreach (GameObject modeil in point_installation)
         {
-            Check_Deep_Line childObject = modeil.GetComponent<Check_Deep_Line>();
+            Set_Lighthouse childObject = modeil.GetComponent<Set_Lighthouse>();
             // Подписываемся на вызов событие\\
             if (childObject != null)
-                childObject.OnActionComplete += Check_Deep_Action;
+                childObject.OnActionComplet += Check_Deep_Action;
         }
     }
 
@@ -33,10 +34,29 @@ public class Engineering_Intelligence : MonoBehaviour
     {
         foreach (GameObject modeil in check_deep)
         {
+            Check_Deep_Line childObject = modeil.GetComponent<Check_Deep_Line>();
+            // Подписываемся на вызов событие\\
+            if (childObject != null)
+                childObject.OnActionComplet += Check_Deep_Action;          
+        }
+    }
+
+    public void Restart()
+    {
+        foreach (GameObject modeil in point_installation)
+        {
             Set_Lighthouse childObject = modeil.GetComponent<Set_Lighthouse>();
             // Подписываемся на вызов событие\\
             if (childObject != null)
-                childObject.OnActionComplet += Check_Deep_Action;
+                childObject.Restart();
+        }
+
+        foreach (GameObject modeil in check_deep)
+        {
+            Check_Deep_Line childObject = modeil.GetComponent<Check_Deep_Line>();
+            // Подписываемся на вызов событие\\
+            if (childObject != null)
+                childObject.Restart();
         }
     }
 
@@ -62,6 +82,7 @@ public class Engineering_Intelligence : MonoBehaviour
             amount_beacon = 0;
             amount_line = 0;
             GameManager.Instance.Show_Learn_Text_Image("Инженерная разведка проведена правильно", null);
+            GameManager.Instance.Check_Engineering_Intelligence();           
         }
     }
 

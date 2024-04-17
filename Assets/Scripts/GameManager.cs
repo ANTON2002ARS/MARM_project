@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Scrollbar scrollbar;
     public float speed_mouse;
     [Header("MARM")]
+    [SerializeField] private GameObject Engineering_Intelligence;
+    [SerializeField] private GameObject Build_Marm;
     public List<GameObject> part_marm;
     [SerializeField] private GameObject River;
     [SerializeField] private GameObject Crane;
@@ -81,10 +83,17 @@ public class GameManager : MonoBehaviour
             
     }
 
-    public void Speed_Cheng()
+    public void Check_Engineering_Intelligence()
     {
-        float a = scrollbar.value * 1000;
-        speed_mouse = a;
+        Engineering_Intelligence.SetActive(false);
+
+    }
+
+    public void Speed_Change()
+    {
+        float speed = scrollbar.value * 1000;
+        if (speed < 1) speed = 1;
+        speed_mouse = speed;
     }
 
     public void Show_Learn_Text_Image(string text, GameObject image_madel)
@@ -139,6 +148,7 @@ public class GameManager : MonoBehaviour
             Crane.GetComponent<Crane_Body>().Enable_Animation(is_Mode);       
         Crane.GetComponent<Crane_Body>().Set_Crane_to_End();
         Zil.GetComponent<Zil_Body>().Set_Zil_to_End();
+        Engineering_Intelligence.SetActive(is_Mode);
         Active_Part(is_Mode);
         foreach (var p in part_marm)
             if (p != null)
