@@ -17,7 +17,7 @@ public class Part_marm : MonoBehaviour
     
     public static Part_marm Instance_Part_marm { set; get; }
     private void Awake() => Instance_Part_marm = this;
-
+        
     private  void Test_Mode_Activetion(List<GameObject> model, bool is_Mode)
     {
         foreach (var item in model)
