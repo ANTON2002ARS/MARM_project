@@ -3480,7 +3480,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8834848014815856855, guid: 949a63c7156e46d49abc3e0cc6bbf2d8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.45
+      value: 8.56
       objectReference: {fileID: 0}
     - target: {fileID: 8834848014815856855, guid: 949a63c7156e46d49abc3e0cc6bbf2d8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4926,7 +4926,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1749395923
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7156,6 +7156,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6333021287706145547}
     m_Modifications:
+    - target: {fileID: 76808432298730453, guid: 69a5275e5d9b8c44d913737a57869aef, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 217280218922538415, guid: 69a5275e5d9b8c44d913737a57869aef, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
