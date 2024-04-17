@@ -7,11 +7,9 @@ public class Set_Lighthouse : MonoBehaviour
     [SerializeField] private GameObject beacon;
     [SerializeField] private GameObject flage;
     public bool Is_set_beacon { private set; get; }
-    public void Restars() => Is_set_beacon = false;
-
     public delegate void ActionComplete(bool is_beacon);
     public event ActionComplete OnActionComplet;
-
+    
     private void Start() => Set_Beacon(false);
    
     private void OnMouseUpAsButton()
@@ -23,8 +21,14 @@ public class Set_Lighthouse : MonoBehaviour
         Set_Beacon(true);
         // Вызвать событие, когда действие завершилось
         OnActionComplet?.Invoke(true);
-    }    
+    } 
 
+    public void Restart() 
+    { 
+        Is_set_beacon = false;
+        Set_Beacon(Is_set_beacon);
+    }
+    
     private void Set_Beacon(bool active)
     {       
         beacon.SetActive(active);
