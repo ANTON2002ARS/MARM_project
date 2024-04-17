@@ -27,22 +27,24 @@ public class GameManager : MonoBehaviour
     // Обучающий решим включен\\
     public bool is_learning_Mode { private set; get; }
     public bool end_animation_test { private set; get; }
-    public bool Is_Open_Menu;
+    public bool Is_Open_Menu;  
     // Номер пролета которые в данный момент ставиться \\
     private int _number_span;
     public  int Number_Span // от 0 до 10
     {
         get => _number_span;
         set
-        {
-            _number_span = value;           
-            if (_number_span > 9)
+        {                    
+            if (_number_span >= 9)
             {
-                _number_span = 0;
+                //_number_span = 0;
                 end_animation_test = true;
                 Show_Learn_Text_Image("Все аппарели и пролеты установлены \n Для проверки, что все детали установлены, нажать Enter", null);
                 Debug.Log("___MARM is builds___");                
-            }                         
+            }    
+            else
+                _number_span = value;   
+
         }
     } 
 
@@ -86,7 +88,7 @@ public class GameManager : MonoBehaviour
     public void Check_Engineering_Intelligence()
     {
         Engineering_Intelligence.SetActive(false);
-
+        Build_Marm.SetActive(true);
     }
 
     public void Speed_Change()
@@ -148,13 +150,14 @@ public class GameManager : MonoBehaviour
             Crane.GetComponent<Crane_Body>().Enable_Animation(is_Mode);       
         Crane.GetComponent<Crane_Body>().Set_Crane_to_End();
         Zil.GetComponent<Zil_Body>().Set_Zil_to_End();
-        Engineering_Intelligence.SetActive(is_Mode);
+        
         Active_Part(is_Mode);
         foreach (var p in part_marm)
             if (p != null)
                 p.GetComponent<Part_marm>().Start_Test_Mode(is_Mode);        
-        end_animation_test = is_Mode;
-        Number_Span = 0;  
+        end_animation_test = !is_Mode;
+        _number_span = 0; 
+        Engineering_Intelligence.SetActive(is_Mode);        
     }
 
     private void Active_Part(bool is_mode)

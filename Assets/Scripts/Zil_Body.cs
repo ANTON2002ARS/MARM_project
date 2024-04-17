@@ -23,7 +23,9 @@ public class Zil_Body : MonoBehaviour
             return;
         if (!Crane_in_position)
             return;
-        if(action_build.Use_Add_Action)
+        if (GameManager.Instance.end_animation_test)
+            return;
+        if (action_build.Use_Add_Action)
             GameManager.Instance.Status_Action.Add(action_build);
 
         switch (GameManager.Instance.Number_Span)
