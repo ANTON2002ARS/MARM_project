@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject River;
     [SerializeField] private GameObject Crane;
     [SerializeField] private GameObject Zil;
+    [SerializeField] private List<GameObject> longitudinal_connection;
     [HideInInspector] public List<Action_build> Status_Action;
     // Обучающий решим включен\\
     public bool is_learning_Mode { private set; get; }
@@ -185,7 +186,13 @@ public class GameManager : MonoBehaviour
 
     public void Open_Manual() => image_manual.SetActive(!image_manual.activeSelf);
 
-    public void Show_River() => River.SetActive(!River.activeSelf);
+    public void Show_River() 
+    {
+        River.SetActive(!River.activeSelf);
+        foreach (var item in longitudinal_connection)
+            item.SetActive(!item.activeSelf);
+        
+    }
     public void Restart_game()
     {
         foreach (var item in Status_Action)

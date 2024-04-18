@@ -13,7 +13,7 @@ public class Object_Klick : MonoBehaviour
     // Можем ли установить обьект\\
     public bool Can_Set = true;
     private bool is_set;
-    private Animator animator_lanyard;
+    private Animator animator_seting;
     // Для проверки  установлен ли обьект и устанавливаем его\\
     public bool Check_Set 
     { 
@@ -25,8 +25,7 @@ public class Object_Klick : MonoBehaviour
         }
         get => is_set;
     }
-
-    
+        
     
     public bool Is_Active_Model_Children()
     {
@@ -36,7 +35,11 @@ public class Object_Klick : MonoBehaviour
     {
         if(this.tag == "lanyard")
         {
-            animator_lanyard.SetBool("is_set", true);
+            animator_seting.SetBool("is_set", true);
+        }
+        else if (this.tag == "pin")
+        {
+            animator_seting.SetBool("is_set", true);
         }
         model_children.SetActive(enable);
         this.GetComponent<BoxCollider>().isTrigger = !enable;
@@ -60,11 +63,9 @@ public class Object_Klick : MonoBehaviour
     private void Start() 
     { 
         start_position = this.transform.position; 
-        if(this.tag == "lanyard")
-        {
-            animator_lanyard = GetComponent<Animator>();
-            Debug.Log("animator_lanyard is add");
-        }
+        //if(this.tag == "lanyard")        
+        animator_seting = GetComponent<Animator>();
+
     }
     public void Set_Object_to_End() => this.transform.position = start_position;
 
