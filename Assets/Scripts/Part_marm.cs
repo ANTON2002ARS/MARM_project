@@ -28,15 +28,14 @@ public class Part_marm : MonoBehaviour
                 object_klick.is_Number_Span_of_model = is_Number_Span;
             }
     }
-
+    // Установка состояние у моделий \\
     public void Start_Test_Mode(bool is_Mode)
     {
         Test_Mode_Activetion(wheel_shield, is_Mode);
         Test_Mode_Activetion(shield, is_Mode);
         Test_Mode_Activetion(lanyatd, is_Mode);
         Test_Mode_Activetion(pin, is_Mode);
-        Test_Mode_Activetion(earring, is_Mode);
-        
+        Test_Mode_Activetion(earring, is_Mode);        
         //Show_Span(!is_Mode);
     }
 
@@ -50,7 +49,7 @@ public class Part_marm : MonoBehaviour
                 l.SetActive(active);
         }
     }
-
+    // Проверка что анкеры установлены \\
     public bool Check_Pin()
     {
         if (pin.Count == 0)
@@ -65,9 +64,10 @@ public class Part_marm : MonoBehaviour
         }
         return true;
     }
+    // Проверка что все части есть для отчета \\
     public string Full_Check_Part_marm()
     {
-        string str = "У пролета номера " + is_Number_Span + " не установлены следующие части: ";
+        string str = "У пролета номера " + is_Number_Span + ", не установлены элементы: ";
         int str_long = str.Length;
         Debug.Log(str); 
         str += Check_Set_Models(wheel_shield);
@@ -76,35 +76,36 @@ public class Part_marm : MonoBehaviour
         str += Check_Set_Models(pin);
         str += Check_Set_Models(earring);
         if (str_long == str.Length)
-            return "У пролета номера " + is_Number_Span + " установлены все части " + "\n";
+            return "У пролета номера " + is_Number_Span + " установлены ВСЕ элементы. " + "\n";
         return str + "\n";
     }
+    // Проверка моделей \\
     private string Check_Set_Models(List<GameObject> models)
     {
         foreach (var model in models)
         {
             if(!model.GetComponent<Object_Klick>().Check_Set)
             {
-                string str = "Не установлен: ";
+                string str = "";
                 switch (model.tag)
                 {
                     case "wheel":
-                        str += "колесоотбой ";
+                        str += "колесоотбой, ";
                         break;
                     case "ralling_stand":
-                        str += "перильное ограждение ";
+                        str += "перильное ограждение, ";
                         break;
                     case "pin":
-                        str += "анкерный свай ";
+                        str += "анкерный свай, ";
                         break;
                     case "lanyard":
-                        str += "талреп ";
+                        str += "талреп, ";
                         break;
                     case "earring":
-                        str += "серьга ";
+                        str += "серьга, ";
                         break;                    
                     case "shield":
-                        str += "деформационный щит ";
+                        str += "деформационный щит. ";
                         break;                    
                     default:
                         Debug.Log("Tag Not faind");
@@ -116,6 +117,4 @@ public class Part_marm : MonoBehaviour
         }
         return null;
     }
-
-
 }

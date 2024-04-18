@@ -10,9 +10,9 @@ public class Zil_Body : MonoBehaviour
     public bool Crane_in_position;
     public static Zil_Body Instance_Zil { get; private set; }
     private void Awake() => Instance_Zil = this;
-
+    // начальная позиция \\
     private void Start() => Start_postion = this.transform.position;
-    
+    // Нажатие на zil \\
     private void OnMouseUpAsButton()
     {
         Debug.Log("Choice object: " + this.name);
@@ -25,9 +25,9 @@ public class Zil_Body : MonoBehaviour
             return;
         if (GameManager.Instance.end_animation_test)
             return;
-        if (action_build.Use_Add_Action)
-            GameManager.Instance.Status_Action.Add(action_build);
-
+        /*if (action_build.Use_Add_Action)
+            GameManager.Instance.Status_Action.Add(action_build);*/
+        // Ппоигрование анимации последовательно \\
         switch (GameManager.Instance.Number_Span)
         {
             case 0:
@@ -61,13 +61,13 @@ public class Zil_Body : MonoBehaviour
                 animator_builds.Play("Set_ramp_coastal_support_2");              
                 break;
         }
+        // Увеличение следующий пролет \\
         GameManager.Instance.Number_Span++;
+        // Нужно нажать на кран \\
         Crane_in_position = false;
-
-        Debug.Log("Number_Span:" + GameManager.Instance.Number_Span);
-        
+        Debug.Log("Number_Span:" + GameManager.Instance.Number_Span);        
     }
-
+    // Установка в начальную позицию \\
     public void Set_Zil_to_End()
     {
         this.transform.position = Start_postion; 

@@ -10,9 +10,10 @@ public class Crane_Body : MonoBehaviour
     private void Start() 
     {
         Start_postion = this.transform.position;
+        //Выключение анимации\\
         animation_builds.enabled = false; 
     }
-
+    // Нажатие на кран \\
     private void OnMouseUpAsButton()
     {
         Debug.Log("Choice object: " + this.name);
@@ -26,7 +27,7 @@ public class Crane_Body : MonoBehaviour
             return;
         /*if (action_build.Use_Add_Action)
             GameManager.Instance.Status_Action.Add(action_build);*/
-
+        // Проигрование анимации последовательно \\
         switch (GameManager.Instance.Number_Span)
         {
             case 0:
@@ -61,9 +62,10 @@ public class Crane_Body : MonoBehaviour
                 animation_builds.Play("Set_Manipulator_coastal_support_2");
                 break;
         }
+        // Нужно нажать на zil\\
         Zil_Body.Instance_Zil.Crane_in_position = true;        
     }
-
+    // В начальную позицию \\
     public void Set_Crane_to_End() => this.transform.position = Start_postion;
     public void Enable_Animation(bool is_enable) 
     {

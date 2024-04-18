@@ -25,26 +25,24 @@ public class Object_Klick : MonoBehaviour
         }
         get => is_set;
     }
-        
-    
+    // Проверка дочернего обьекта\\
     public bool Is_Active_Model_Children()
     {
         return model_children.activeSelf;
     }
+    // Показать тело анимации\\
     private void Enable_Modeil(bool enable)
     {
+        // Проигрование анимации у моделей\\
         if(this.tag == "lanyard")
-        {
-            animator_seting.SetBool("is_set", true);
-        }
+            animator_seting.SetBool("is_set", true);       
         else if (this.tag == "pin")
-        {
             animator_seting.SetBool("is_set", true);
-        }
+       // Активирование модели  \\
         model_children.SetActive(enable);
         this.GetComponent<BoxCollider>().isTrigger = !enable;
     }
-
+    // Дочерние обьекты доступность\\
     public void is_children_madeil(bool is_Mode)
     {
         Can_Set = !is_Mode;
@@ -62,8 +60,7 @@ public class Object_Klick : MonoBehaviour
 
     private void Start() 
     { 
-        start_position = this.transform.position; 
-        //if(this.tag == "lanyard")        
+        start_position = this.transform.position;
         animator_seting = GetComponent<Animator>();
 
     }

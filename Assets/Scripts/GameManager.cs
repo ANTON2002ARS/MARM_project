@@ -27,7 +27,9 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public List<Action_build> Status_Action;
     // Обучающий решим включен\\
     public bool is_learning_Mode { private set; get; }
+    // Все анимации выполнены \\
     public bool end_animation_test { private set; get; }
+    // Меню открыто\\
     public bool Is_Open_Menu;  
     // Номер пролета которые в данный момент ставиться \\
     private int _number_span;
@@ -40,40 +42,44 @@ public class GameManager : MonoBehaviour
             {
                 //_number_span = 0;
                 end_animation_test = true;
-                Show_Learn_Text_Image("Все аппарели и пролеты установлены \n Для проверки, что все детали установлены, нажать Enter", null);
+                Show_Learn_Text_Image("Все аппарели и пролеты установлены. \n Для проверки, что все элементы установлены, нажать Enter", null);
                 Debug.Log("___MARM is builds___");                
             }    
             else
                 _number_span = value;   
-
         }
     } 
-
+    // Для задержки при открытии меню\\
     private float delay = 1.2f; // Установите задержку в секундах
     private float lastKeyPressTime; // Время последнего нажатия клавиши
-    // Для отслеживание ошибок \\
-    private int Max_Mistakes = 10;
-    private int _currentMistakes = 0;
-    public int Mistakes{ get => _currentMistakes; set => _currentMistakes = value; }
+    // Для вызова кода \\
     public static GameManager Instance { get; private set; }
     private void Awake() => Instance = this;
  
     private void Start()
     {       
+        // Установка скорости мыши \\
         speed_mouse = 250;
+        // Открытии меня в начале \\
         air_camera.enabled = true;
+        // Скрыть игрока на карте \\
         player.SetActive(false);
+        // Текст для игрока \\
         Close_Learn_Text();
     }
     private  void Update()
     {
+        // Отслеживание нажатии Enter \\
         if (Input.GetKeyDown(KeyCode.Return)|| Input.GetKeyDown(KeyCode.KeypadEnter))
-        {            
+        {          
+            // Вызов проверки всех пролетов \\
             if (end_animation_test)
                 Sheck_Other();          
         }
+        // Нажатие Esc для октрытие меню \\
         if (Input.GetKey(KeyCode.Escape))
         {
+            // Задержка нажатие \\
             if (Time.time - lastKeyPressTime > delay)
             {
                 Chenge_View();
@@ -81,48 +87,51 @@ public class GameManager : MonoBehaviour
                 lastKeyPressTime = Time.time; 
             }   
         }
+        // Для закрытие текста у игрока нажатие Е \\
         else if (Input.GetKey(KeyCode.E))
-            Close_Learn_Text();       
-            
+            Close_Learn_Text(); 
     }
-
+    // Проверка что есть инжинерная разведка \\
     public void Check_Engineering_Intelligence()
     {
-        Engineering_Intelligence.SetActive(false);
-        Build_Marm.SetActive(true);
+        // Что нужно для выполнение действий \\
+        Engineering_Intelligence.SetActive(false);       
     }
-
+    // Изменение скорости мыши \\
     public void Speed_Change()
     {
         float speed = scrollbar.value * 1000;
         if (speed < 1) speed = 1;
         speed_mouse = speed;
     }
-
+    // Показать текс обучение у игрока и модель-фото обьекта \\
     public void Show_Learn_Text_Image(string text, GameObject image_madel)
     {
         learn_canvas.enabled = true;
         learn_text.text = text;
+        // Если не нужно то без модели \\
         if (image_madel == null)
-            return;
-     
+            return;     
         if(forder.transform.childCount == 1)
             Destroy(forder.transform.GetChild(0).gameObject);
         GameObject Image = Instantiate(image_madel, transform.position, Quaternion.identity);
         Image.transform.SetParent(forder.transform, false);
 
     }
+    // Закрыть текс у игрока \\
     public void Close_Learn_Text() => learn_canvas.enabled = false;
    
-    // Прповеряем что все детали маста установлены
+    // Прповеряем что все элементы маста установлены \\
     private void Sheck_Other()
     {
-        string status_text = "Не установлены части \n";
+        // Собираем строку для отчета перед игроком\\
+        string status_text = "АНАЛИЗ ПРОЛЕТОВ МОСТА \n";
         foreach (var part in part_marm)
             status_text += part.GetComponent<Part_marm>().Full_Check_Part_marm();
         Show_Learn_Text_Image(status_text, null);
     }
-        
+       
+    // Меняем вид и игрока на меня и обратно \\
     private void Chenge_View()
     {        
         if (player.activeSelf)
@@ -140,11 +149,9 @@ public class GameManager : MonoBehaviour
             Is_Open_Menu = false;
             Menu.gameObject.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;
-        }        
-        /*player.SetActive(!air_camera.enabled);
-        air_camera.enabled = player.activeSelf;*/
+        }   
     }
-
+    // Начало постройки моста или показать мост \\
     public void Start_Test_Mode(bool is_Mode)
     {
         if(!is_Mode)
@@ -160,16 +167,14 @@ public class GameManager : MonoBehaviour
         _number_span = 0; 
         Engineering_Intelligence.SetActive(is_Mode);        
     }
-
+    // Показать-скрыть части моста \\
     private void Active_Part(bool is_mode)
     {
+        Debug.Log("Active_Part: " + is_mode);
         foreach (var item in part_marm)
-        {
-            Debug.Log("Active_Part: " + is_mode);
-            item.SetActive(!is_mode);
-        }            
+            item.SetActive(!is_mode);                 
     }
-
+    // Для кнопок \\
     public void Show_marm()
     {
         Chenge_View();
@@ -190,16 +195,8 @@ public class GameManager : MonoBehaviour
     {
         River.SetActive(!River.activeSelf);
         foreach (var item in longitudinal_connection)
-            item.SetActive(!item.activeSelf);
-        
-    }
-    public void Restart_game()
-    {
-        foreach (var item in Status_Action)
-        {
-            Debug.Log(item.Name_Action);
-        }
-    }
-    
+            item.SetActive(!item.activeSelf);        
+    }  
+
     public void Exit_game() => Application.Quit();
 }
