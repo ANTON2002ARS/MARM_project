@@ -177,8 +177,8 @@ GameObject:
   m_Component:
   - component: {fileID: 9095932777262862122}
   - component: {fileID: 1470420399417943678}
-  - component: {fileID: 1969191210657516802}
   - component: {fileID: 6397572824428422132}
+  - component: {fileID: 1969191210657516802}
   m_Layer: 0
   m_Name: For_Ianyard
   m_TagString: lanyard
@@ -225,22 +225,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.2128601, y: 0.44316673, z: 0.71567535}
   m_Center: {x: 0.0061950684, y: 0.19394302, z: 0.0036563873}
---- !u!114 &1969191210657516802
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1448111227258555807}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5559f418bb198bd46923d6d24f9a9a9b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  action_build: {fileID: 11400000, guid: cd2af31163031db4f83e11000880f5cc, type: 2}
-  model_children: {fileID: 149751673331729924}
-  children_additional: []
-  Can_Set: 1
 --- !u!95 &6397572824428422132
 Animator:
   serializedVersion: 5
@@ -262,6 +246,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1969191210657516802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448111227258555807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5559f418bb198bd46923d6d24f9a9a9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action_build: {fileID: 11400000, guid: cd2af31163031db4f83e11000880f5cc, type: 2}
+  model_children: {fileID: 149751673331729924}
+  children_additional: []
+  Can_Set: 1
 --- !u!1 &4338902860129749412
 GameObject:
   m_ObjectHideFlags: 0

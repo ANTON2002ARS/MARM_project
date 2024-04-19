@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 778749787156493468}
   - component: {fileID: 5554136552575323696}
   - component: {fileID: 2210952120472369807}
+  - component: {fileID: 611311849019286808}
   m_Layer: 0
   m_Name: shield
   m_TagString: shield
@@ -71,6 +72,27 @@ MonoBehaviour:
   model_children: {fileID: 2516381416177411466}
   children_additional: []
   Can_Set: 1
+--- !u!95 &611311849019286808
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 109630529156935206}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 452729b08ac6e8a458115da9cc542eba, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2516381416177411466
 GameObject:
   m_ObjectHideFlags: 0
