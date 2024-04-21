@@ -28,11 +28,15 @@ public class Element_Bridge : MonoBehaviour
         Enable_Modeil(true);
     }
 
-    public void To_start_position()
+    public void To_Start_Position()
     {
         this.transform.position = _start_position;
         this.transform.rotation = _srart_rotation;
         this.transform.localScale = _start_scale;
+        // Дочерние тоже в начало \\
+        if(children_additional.Count != 0)
+            foreach (var child in children_additional)
+                child.GetComponent<Element_Bridge>().To_Start_Position();      
     }
     // отпровляем ошибку что не поставил элемент \\
     public Action_build Check_Active_Model()
@@ -64,13 +68,12 @@ public class Element_Bridge : MonoBehaviour
 
     private void Learn_Mode()
     {
-        // Если нужно добавляем действие в список\\
-        var gameManager = GameManager.Instance;
+        // Если нужно добавляем действие в список\\        
         /*if(action_build.Use_Add_Action)
             gameManager.Status_Action.Add(action_build);*/
         // Открываем окно информации у игрока\\
-        if (gameManager.is_learning_Mode)
-            gameManager.Show_Learn_Text_Image(action_build.Name_Object
+        if (Controler_Build_Marm.Instance_Call_Control.Is_learning_Mode)
+            GameManager.Instance.Show_Learn_Text_Image(action_build.Name_Object
                 + "\n" + action_build.Use_Object + "\n" + action_build.Consists_modeil, action_build.Image_Modeil);
     }
 }

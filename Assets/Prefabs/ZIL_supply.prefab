@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 8828669468943001585}
   - component: {fileID: 1948239422148068727}
   - component: {fileID: 662753644521441732}
+  - component: {fileID: 7987876098497541293}
   m_Layer: 0
   m_Name: ZIL_supply
   m_TagString: Untagged
@@ -169,7 +170,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 226236798085194443}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f44e1d39f1df5b149a8b21d2b466b5ac, type: 3}
   m_Name: 
@@ -177,6 +178,18 @@ MonoBehaviour:
   action_build: {fileID: 11400000, guid: 1f3ffb6613945af4aa66bebb6af8ed74, type: 2}
   animator_builds: {fileID: 0}
   Crane_in_position: 0
+--- !u!114 &7987876098497541293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 226236798085194443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e77199f6e95b3134b9b95007681f82a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &236544686743901559
 GameObject:
   m_ObjectHideFlags: 0

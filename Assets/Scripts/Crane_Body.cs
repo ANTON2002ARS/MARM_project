@@ -17,18 +17,19 @@ public class Crane_Body : MonoBehaviour
     private void OnMouseUpAsButton()
     {
         Debug.Log("Choice object: " + this.name);
-        if (GameManager.Instance.Is_Open_Menu)
-            return;
-        if (GameManager.Instance.is_learning_Mode)
-            return;             
+       /* if (GameManager.Instance.Is_Open_Menu)
+            return;*/
+        /*if (GameManager.Instance.is_learning_Mode)
+            return;       */      
         if (Zil_Body.Instance_Zil.Crane_in_position)
             return;
-        if (GameManager.Instance.end_animation_test)
-            return;
+       /* if (GameManager.Instance.end_animation_test)
+            return;*/
         /*if (action_build.Use_Add_Action)
             GameManager.Instance.Status_Action.Add(action_build);*/
         // ѕроигрование анимации последовательно \\
-        switch (GameManager.Instance.Number_Span)
+       // switch (GameManager.Instance.Number_Span)
+        switch (1)
         {
             case 0:
                 animation_builds.enabled = true;

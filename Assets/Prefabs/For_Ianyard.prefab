@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 9095932777262862122}
   - component: {fileID: 1470420399417943678}
   - component: {fileID: 6397572824428422132}
-  - component: {fileID: 1969191210657516802}
+  - component: {fileID: 3819532613562019985}
   m_Layer: 0
   m_Name: For_Ianyard
   m_TagString: lanyard
@@ -246,7 +246,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1969191210657516802
+--- !u!114 &3819532613562019985
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -255,13 +255,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1448111227258555807}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5559f418bb198bd46923d6d24f9a9a9b, type: 3}
+  m_Script: {fileID: 11500000, guid: d721321dac75e0f42a581cc3c2429d40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  action_build: {fileID: 11400000, guid: cd2af31163031db4f83e11000880f5cc, type: 2}
   model_children: {fileID: 149751673331729924}
   children_additional: []
-  Can_Set: 1
+  action_build: {fileID: 11400000, guid: cd2af31163031db4f83e11000880f5cc, type: 2}
 --- !u!1 &4338902860129749412
 GameObject:
   m_ObjectHideFlags: 0

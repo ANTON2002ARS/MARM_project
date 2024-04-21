@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6165351264623676501}
   - component: {fileID: 3806826213761468953}
-  - component: {fileID: 1769188559059535581}
+  - component: {fileID: 8773451399152180437}
   m_Layer: 0
   m_Name: Railing_Stand
   m_TagString: railing_stand
@@ -55,7 +55,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.4, y: 0.4, z: 5.5}
   m_Center: {x: -0.06, y: 0.23, z: -2.75}
---- !u!114 &1769188559059535581
+--- !u!114 &8773451399152180437
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -64,13 +64,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1989189014625662538}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5559f418bb198bd46923d6d24f9a9a9b, type: 3}
+  m_Script: {fileID: 11500000, guid: d721321dac75e0f42a581cc3c2429d40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  action_build: {fileID: 11400000, guid: 954005cccc8ffa54088f4de44bcb5a56, type: 2}
   model_children: {fileID: 8922510833608322020}
   children_additional: []
-  Can_Set: 1
+  action_build: {fileID: 11400000, guid: 954005cccc8ffa54088f4de44bcb5a56, type: 2}
 --- !u!1 &6297390421332404487
 GameObject:
   m_ObjectHideFlags: 0

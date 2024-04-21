@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 778749787156493468}
   - component: {fileID: 5554136552575323696}
-  - component: {fileID: 2210952120472369807}
   - component: {fileID: 611311849019286808}
+  - component: {fileID: 1426099146965689316}
   m_Layer: 0
   m_Name: shield
   m_TagString: shield
@@ -56,22 +56,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 59, y: 360, z: 2151}
   m_Center: {x: -78, y: 189, z: -1076}
---- !u!114 &2210952120472369807
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 109630529156935206}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5559f418bb198bd46923d6d24f9a9a9b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  action_build: {fileID: 11400000, guid: 0dd2ac0b38f32ab46aa9878a2a5641fd, type: 2}
-  model_children: {fileID: 2516381416177411466}
-  children_additional: []
-  Can_Set: 1
 --- !u!95 &611311849019286808
 Animator:
   serializedVersion: 5
@@ -93,6 +77,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1426099146965689316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 109630529156935206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d721321dac75e0f42a581cc3c2429d40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  model_children: {fileID: 2516381416177411466}
+  children_additional: []
+  action_build: {fileID: 11400000, guid: 0dd2ac0b38f32ab46aa9878a2a5641fd, type: 2}
 --- !u!1 &2516381416177411466
 GameObject:
   m_ObjectHideFlags: 0

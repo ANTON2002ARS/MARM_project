@@ -27,6 +27,24 @@ public class One_Shore_Span : MonoBehaviour
         return null;
     }
 
+    public void Start_Position_Elements() 
+    {
+        start_position_elenent(folder_Lanyard);
+        start_position_elenent(folder_Wheels);
+        start_position_elenent(folder_Pin);
+        start_position_elenent(folder_Shields);
+    }
+    private void start_position_elenent(GameObject folder)
+    {        
+        // Получаем компонент Transform родительского объекта
+        Transform folder_Transform = folder.transform;
+        // Проходимся по всем дочерним объектам \\
+        for (int i = 0; i < folder_Transform.childCount; i++)
+        {
+            Transform transform = folder_Transform.GetChild(i);
+            transform.gameObject.GetComponent<Element_Bridge>().To_Start_Position();            
+        }
+    }
     private List<Action_build> Check_Elements()
     {
         List<Action_build> action_builds = null;

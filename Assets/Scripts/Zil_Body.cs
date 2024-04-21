@@ -17,18 +17,19 @@ public class Zil_Body : MonoBehaviour
     {
         Debug.Log("Choice object: " + this.name);
 
-        if (GameManager.Instance.Is_Open_Menu)
-            return;
-        if (GameManager.Instance.is_learning_Mode)
-            return;
+       /* if (GameManager.Instance.Is_Open_Menu)
+            return;*/
+        /*if (GameManager.Instance.is_learning_Mode)
+            return;*/
         if (!Crane_in_position)
             return;
-        if (GameManager.Instance.end_animation_test)
-            return;
+       /* if (GameManager.Instance.end_animation_test)
+            return;*/
         /*if (action_build.Use_Add_Action)
             GameManager.Instance.Status_Action.Add(action_build);*/
         // Ппоигрование анимации последовательно \\
-        switch (GameManager.Instance.Number_Span)
+        //switch (GameManager.Instance.Number_Span)            
+        switch (1)
         {
             case 0:
                 animator_builds.Play("Set_ramp_coastal_support_1");         
@@ -62,10 +63,10 @@ public class Zil_Body : MonoBehaviour
                 break;
         }
         // Увеличение следующий пролет \\
-        GameManager.Instance.Number_Span++;
+        //GameManager.Instance.Number_Span++;
         // Нужно нажать на кран \\
         Crane_in_position = false;
-        Debug.Log("Number_Span:" + GameManager.Instance.Number_Span);        
+        //Debug.Log("Number_Span:" + GameManager.Instance.Number_Span);        
     }
     // Установка в начальную позицию \\
     public void Set_Zil_to_End()

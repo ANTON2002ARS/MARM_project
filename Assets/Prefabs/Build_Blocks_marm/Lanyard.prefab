@@ -93,7 +93,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6826361957581919405}
   - component: {fileID: 1215813009817930769}
-  - component: {fileID: 1526980897694292411}
   m_Layer: 0
   m_Name: Lanyard
   m_TagString: lanyard
@@ -138,19 +137,3 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.1737132, y: 1, z: 0.08381077}
   m_Center: {x: 0.004000008, y: 0, z: 0.13059662}
---- !u!114 &1526980897694292411
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6194644821502152215}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5559f418bb198bd46923d6d24f9a9a9b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  action_build: {fileID: 11400000, guid: cd2af31163031db4f83e11000880f5cc, type: 2}
-  model_children: {fileID: 5783908376183473666}
-  children_additional: []
-  Can_Set: 1

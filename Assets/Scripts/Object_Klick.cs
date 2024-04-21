@@ -84,7 +84,7 @@ public class Object_Klick : MonoBehaviour
         /*if(action_build.Use_Add_Action)
             gameManager.Status_Action.Add(action_build);*/
         // Открываем окно информации у игрока\\
-        if (gameManager.is_learning_Mode)
+        //if (gameManager.is_learning_Mode)
             gameManager.Show_Learn_Text_Image(action_build.Name_Object
                 + "\n" + action_build.Use_Object + "\n" + action_build.Consists_modeil, action_build.Image_Modeil);
     }
