@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2764407992494895205}
   - component: {fileID: 2045051339502794001}
+  - component: {fileID: 3779954251118582389}
   - component: {fileID: 1520524067548750945}
   m_Layer: 0
   m_Name: Earring
@@ -55,6 +56,27 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 216.44566, y: 320.38, z: 48.3}
   m_Center: {x: -81.32333, y: -69.88, z: 8.670001}
+--- !u!95 &3779954251118582389
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3838738376295275718}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f3376d6f05acc054db9ccac444478131, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &1520524067548750945
 MonoBehaviour:
   m_ObjectHideFlags: 0

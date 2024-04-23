@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<GameObject> longitudinal_connection;
     // Список ошибок\\
     [Header("mistakes")]
-    [SerializeField] private List<Action_build> Main_list_mistakes;
+    //[SerializeField] private List<Action_build> Main_list_mistakes;
     // Для задержки при открытии меню\\
     private float delay = 1.2f; // Установите задержку в секундах
     private float lastKeyPressTime; // Время последнего нажатия клавиши
@@ -47,8 +47,9 @@ public class GameManager : MonoBehaviour
         // Отслеживание нажатии Enter \\
         if (Input.GetKeyDown(KeyCode.Return)|| Input.GetKeyDown(KeyCode.KeypadEnter))
         {
-            // Вызов проверки всех пролетов \\
-            Сheck_Other();
+            // Вызов проверки всех пролетов моста \\
+            if(!Controler_Build_Marm.Instance_Call_Control.is_Build_Bridge && !Controler_Build_Marm.Instance_Call_Control.Is_learning_Mode)
+                Сheck_Other();
         }
         // Нажатие Esc для открытие меню \\
         if (Input.GetKey(KeyCode.Escape))
@@ -56,7 +57,7 @@ public class GameManager : MonoBehaviour
             // Задержка нажатие \\
             if (Time.time - lastKeyPressTime > delay)
             {
-                Chenge_View();
+                Change_View();
                 // Обновите время последнего нажатия клавиши
                 lastKeyPressTime = Time.time; 
             }   
@@ -95,50 +96,41 @@ public class GameManager : MonoBehaviour
     // Проверяем что все элементы моста установлены \\
     private void Сheck_Other()
     {
+        List<Action_build> list_mistakes = new List<Action_build>();
 
-
-
+        list_mistakes.AddRange(Controler_Build_Marm.Instance_Call_Control.Сheck_Other());
+        string status_text = "АНАЛИЗ ПРОЛЕТОВ МОСТА \n" + "Список не установленый элементов: \n";
+        foreach (var m in list_mistakes)
+        {
+            status_text += m.Mistake + "\n";
+        }
         // Собираем строку для отчета перед игроком\\
-        string status_text = "АНАЛИЗ ПРОЛЕТОВ МОСТА \n";        
+        //string status_text = "АНАЛИЗ ПРОЛЕТОВ МОСТА \n";        
         Show_Learn_Text_Image(status_text, null);
     }
-    public void Close_Engineering_Intelligence()
+    // убрать инжинерную разведку и добавить ошибку \\
+    public Action_build Close_Engineering_Intelligence()
     {
         if (!Engineering_Intelligence_folder.activeSelf)
-            return;
+            return null;
         Engineering_Intelligence_folder.SetActive(false);
-        Main_list_mistakes.Add(Engineering_Intelligence.Instance_Engineering_Intelligence.Mistake);
+        return Engineering_Intelligence.Instance_Engineering_Intelligence.Mistake;
     }
-
-    // Начало постройки моста или показать мост \\
-    public void Start_Test_Mode(bool is_Mode)
-    {
-        var control = Build_Marm.GetComponent<Controler_Build_Marm>();
-        control.Is_learning_Mode = !is_Mode;
-        Debug.Log("is_Mode: " + is_Mode);
-        Engineering_Intelligence_folder.SetActive(is_Mode);
-        control.View_Element_Active(!is_Mode);
-        if (is_Mode)
-        {
-            control.Start_Build_Bridge();            
-        }
-        else
-        {
-            control.Stop_Build_Bridge();            
-        }             
-    }    
+ 
     
     // Для кнопок \\
     public void Show_marm()
     {
-        Chenge_View();        
-        Start_Test_Mode(false);
+        Change_View();        
+        //Start_Test_Mode(false);
     }
 
     public void Start_test()
     {
-        Chenge_View();        
-        Start_Test_Mode(true);
+        Change_View();
+        // Начало постройки моста или показать мост \\
+        Build_Marm.GetComponent<Controler_Build_Marm>().Start_Build_Bridge();     
+        
     }
 
     public void Open_Manual() => image_manual.SetActive(!image_manual.activeSelf);
@@ -156,7 +148,7 @@ public class GameManager : MonoBehaviour
     // Закрыть текс у игрока \\
     private void Close_Learn_Text() => learn_canvas.enabled = false;
     // Меняем вид и игрока на меня и обратно \\
-    private void Chenge_View()
+    private void Change_View()
     {
         if (player.activeSelf)
         {

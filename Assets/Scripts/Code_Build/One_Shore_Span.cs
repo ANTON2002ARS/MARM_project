@@ -67,11 +67,20 @@ public class One_Shore_Span : MonoBehaviour
     }
     private List<Action_build> Check_Elements()
     {
-        List<Action_build> action_builds = null;
-        action_builds.AddRange(Check_One_Elements(folder_Lanyard, false));
-        action_builds.AddRange(Check_One_Elements(folder_Wheels, true));
-        action_builds.AddRange(Check_One_Elements(folder_Pin, false));
-        action_builds.AddRange(Check_One_Elements(folder_Shields, false));
+        List<Action_build> action_builds = new List<Action_build>(); 
+        List<Action_build> list_Lanyard = Check_One_Elements(folder_Lanyard, false);
+        if (list_Lanyard != null)
+            action_builds.AddRange(list_Lanyard);
+        List<Action_build> list_Wheels = Check_One_Elements(folder_Wheels, true);
+        if (list_Wheels != null)
+            action_builds.AddRange(list_Wheels);
+        List<Action_build> list_Pin = Check_One_Elements(folder_Pin, false);
+        if (list_Pin != null)
+            action_builds.AddRange(list_Pin);
+        List<Action_build> list_Shields = Check_One_Elements(folder_Shields, false);
+        if (list_Shields != null)
+            action_builds.AddRange(list_Shields);
+
         return action_builds;
     }
 

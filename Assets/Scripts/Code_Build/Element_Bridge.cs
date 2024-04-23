@@ -16,12 +16,17 @@ public class Element_Bridge : MonoBehaviour
     }
     private void OnMouseUpAsButton()
     {
-        Debug.Log("Choice object: " + this.name);
-        Learn_Mode();
-        // Проигрование анимации у моделей\\
-        if (animator_seting != null)
-            animator_seting.SetTrigger("is_set");
-        Enable_Modeil(true);
+        Debug.Log("Choice object: " + this.name);        
+        if (Controler_Build_Marm.Instance_Call_Control.Is_learning_Mode)
+            Learn_Mode();
+        else
+        {
+            animator_seting.ResetTrigger("is_set");
+            // Проигрование анимации у моделей\\
+            if (animator_seting != null)
+                animator_seting.SetTrigger("is_set");
+            Enable_Modeil(true);
+        }
     }
         
     // отпровляем ошибку что не поставил элемент \\
@@ -57,12 +62,8 @@ public class Element_Bridge : MonoBehaviour
 
     private void Learn_Mode()
     {
-        // Если нужно добавляем действие в список\\        
-        /*if(action_build.Use_Add_Action)
-            gameManager.Status_Action.Add(action_build);*/
-        // Открываем окно информации у игрока\\
-        if (Controler_Build_Marm.Instance_Call_Control.Is_learning_Mode)
-            GameManager.Instance.Show_Learn_Text_Image(action_build.Name_Object
-                + "\n" + action_build.Use_Object + "\n" + action_build.Consists_modeil, action_build.Image_Modeil);
+        // Открываем окно информации у игрока\\       
+        GameManager.Instance.Show_Learn_Text_Image(action_build.Name_Object
+            + "\n" + action_build.Use_Object + "\n" + action_build.Consists_modeil, action_build.Image_Modeil);
     }
 }

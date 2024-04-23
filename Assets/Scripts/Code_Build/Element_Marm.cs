@@ -25,6 +25,7 @@ public class Element_Marm : MonoBehaviour
 
     public void To_Start_Position()
     {
+        Debug.Log("game Object name: " + this.gameObject.name);
         this.transform.position = _start_position;
         this.transform.rotation = _srart_rotation;
         this.transform.localScale = _start_scale;
