@@ -4,24 +4,26 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
-{   
+{
     [Header("For Player")]
     [SerializeField] private GameObject player;
     [SerializeField] private Canvas learn_canvas;
     [SerializeField] private Text learn_text;
     [SerializeField] private GameObject forder;
-    [Header("Menu Game")]   
+    [Header("Menu Game")]
     [SerializeField] private Camera air_camera;
     [SerializeField] private Canvas Menu;
     [SerializeField] private GameObject image_manual;
     [SerializeField] private Scrollbar scrollbar;
     public float speed_mouse;
     [Header("MARM")]
-    [SerializeField] private GameObject Engineering_Intelligence;
+    [SerializeField] private GameObject Engineering_Intelligence_folder;
     [SerializeField] private GameObject Build_Marm;
-    [SerializeField] private GameObject River;  
+    [SerializeField] private GameObject River;
     [SerializeField] private List<GameObject> longitudinal_connection;
-        
+    // Список ошибок\\
+    [Header("mistakes")]
+    [SerializeField] private List<Action_build> Main_list_mistakes;
     // Для задержки при открытии меню\\
     private float delay = 1.2f; // Установите задержку в секундах
     private float lastKeyPressTime; // Время последнего нажатия клавиши
@@ -63,11 +65,11 @@ public class GameManager : MonoBehaviour
         if (Input.GetKey(KeyCode.E))
             Close_Learn_Text(); 
     }
-    // Проверка что есть инжинерная разведка \\
+    // Проверка что есть инжbнерная разведка \\
     public void Check_Engineering_Intelligence()
     {
         // Что нужно для выполнение действий \\
-        Engineering_Intelligence.SetActive(false);       
+        Engineering_Intelligence_folder.SetActive(false);       
     }
     // Изменение скорости мыши \\
     public void Speed_Change()
@@ -76,7 +78,7 @@ public class GameManager : MonoBehaviour
         if (speed < 1) speed = 1;
         speed_mouse = speed;
     }
-    // Показать текс обучение у игрока и модель-фото обьекта \\
+    // Показать текст обучение у игрока и модель-фото обьекта \\
     public void Show_Learn_Text_Image(string text, GameObject image_madel)
     {
         learn_canvas.enabled = true;
@@ -100,23 +102,30 @@ public class GameManager : MonoBehaviour
         string status_text = "АНАЛИЗ ПРОЛЕТОВ МОСТА \n";        
         Show_Learn_Text_Image(status_text, null);
     }
-           
+    public void Close_Engineering_Intelligence()
+    {
+        if (!Engineering_Intelligence_folder.activeSelf)
+            return;
+        Engineering_Intelligence_folder.SetActive(false);
+        Main_list_mistakes.Add(Engineering_Intelligence.Instance_Engineering_Intelligence.Mistake);
+    }
+
     // Начало постройки моста или показать мост \\
     public void Start_Test_Mode(bool is_Mode)
     {
         var control = Build_Marm.GetComponent<Controler_Build_Marm>();
         control.Is_learning_Mode = !is_Mode;
+        Debug.Log("is_Mode: " + is_Mode);
+        Engineering_Intelligence_folder.SetActive(is_Mode);
+        control.View_Element_Active(!is_Mode);
         if (is_Mode)
         {
-            control.Start_Build_Bridge();
+            control.Start_Build_Bridge();            
         }
         else
         {
-            control.Stop_Build_Bridge();
-        }
-
-
-       // Engineering_Intelligence.SetActive(is_Mode);        
+            control.Stop_Build_Bridge();            
+        }             
     }    
     
     // Для кнопок \\

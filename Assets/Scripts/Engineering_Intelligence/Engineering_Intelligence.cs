@@ -5,12 +5,12 @@ using UnityEngine;
 public class Engineering_Intelligence : MonoBehaviour
 {
     [SerializeField] private List<GameObject> point_installation;
-    private int amount_beacon;
-    [SerializeField] private List<GameObject> check_deep;
-    private int amount_line;       
+    private int amount_beacon;    
+    [SerializeField] private List<GameObject> check_deep;    
+    private int amount_line;      
+    public Action_build Mistake; 
     public static Engineering_Intelligence Instance_Engineering_Intelligence { get; private set; }
     private void Awake() => Instance_Engineering_Intelligence = this;
-
 
     private void Start()
     {
@@ -18,7 +18,7 @@ public class Engineering_Intelligence : MonoBehaviour
         Add_Action_point_installation();
         Add_Action_check_deep();
     }
-
+        
     private void Add_Action_point_installation()
     {
         foreach (GameObject modeil in point_installation)

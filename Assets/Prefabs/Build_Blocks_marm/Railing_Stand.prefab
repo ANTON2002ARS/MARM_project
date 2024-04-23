@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6165351264623676501}
   - component: {fileID: 3806826213761468953}
+  - component: {fileID: 6859736195968515517}
   - component: {fileID: 8773451399152180437}
   m_Layer: 0
   m_Name: Railing_Stand
@@ -27,11 +28,11 @@ Transform:
   m_GameObject: {fileID: 1989189014625662538}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 32.47, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8113499680936833374}
+  - {fileID: 1928712575748046654}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &3806826213761468953
@@ -53,8 +54,29 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.4, y: 0.4, z: 5.5}
-  m_Center: {x: -0.06, y: 0.23, z: -2.75}
+  m_Size: {x: 0.13, y: 0.14, z: 5.6}
+  m_Center: {x: -0.049999997, y: -0.023999996, z: -2.7}
+--- !u!95 &6859736195968515517
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1989189014625662538}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 69f0390773961f34890fde1017695b7c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &8773451399152180437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67,7 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d721321dac75e0f42a581cc3c2429d40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  model_children: {fileID: 8922510833608322020}
+  model_children: {fileID: 6297390421332404487}
   children_additional: []
   action_build: {fileID: 11400000, guid: 954005cccc8ffa54088f4de44bcb5a56, type: 2}
 --- !u!1 &6297390421332404487
@@ -82,7 +104,7 @@ GameObject:
   - component: {fileID: 1356218637305505188}
   - component: {fileID: 4193220378040488709}
   m_Layer: 0
-  m_Name: ?????????_??????
+  m_Name: railing_stand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -96,12 +118,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6297390421332404487}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -6.4, z: 0}
+  m_LocalScale: {x: 0.005, y: 0.005, z: 0.005}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8113499680936833374}
+  m_Father: {fileID: 6165351264623676501}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1356218637305505188
 MeshFilter:
@@ -153,35 +175,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &8922510833608322020
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8113499680936833374}
-  m_Layer: 0
-  m_Name: railing_stand_obg
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8113499680936833374
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8922510833608322020}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: -6.15, z: 0}
-  m_LocalScale: {x: 0.005, y: 0.005, z: 0.005}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1928712575748046654}
-  m_Father: {fileID: 6165351264623676501}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
