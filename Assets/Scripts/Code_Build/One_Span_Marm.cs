@@ -10,7 +10,7 @@ public class One_Span_Marm : MonoBehaviour
     [SerializeField] private GameObject folder_Shields;
     [SerializeField] private List<GameObject> Span_Block;
     [SerializeField] private List<GameObject> Support_Block;
-    //public bool Is_Span_Completely;
+    public bool Is_learning_status;
 
     public void View_Element_Active(bool is_active)
     {

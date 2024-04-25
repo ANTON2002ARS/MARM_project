@@ -20,7 +20,7 @@ public class Element_Marm : MonoBehaviour
     private void OnMouseUpAsButton()
     {
         Debug.Log("Choice object: " + this.name);
-        Learn_Mode();
+        //Learn_Mode();
     }
 
     public void To_Start_Position()
@@ -31,12 +31,12 @@ public class Element_Marm : MonoBehaviour
         this.transform.localScale = _start_scale;
     }
 
-    private void Learn_Mode()
+    /*private void Learn_Mode()
     { 
         // Открываем окно информации у игрока\\
         if (Controler_Build_Marm.Instance_Call_Control.Is_learning_Mode)
             GameManager.Instance.Show_Learn_Text_Image(action_build.Name_Object
                 + "\n" + action_build.Use_Object + "\n" + action_build.Consists_modeil, action_build.Image_Modeil);
-    }
+    }*/
 
 }

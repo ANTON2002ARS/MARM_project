@@ -17,9 +17,9 @@ public class Element_Bridge : MonoBehaviour
     private void OnMouseUpAsButton()
     {
         Debug.Log("Choice object: " + this.name);        
-        if (Controler_Build_Marm.Instance_Call_Control.Is_learning_Mode)
+        /*if (Controler_Build_Marm.Instance_Call_Control.Is_learning_Mode)
             Learn_Mode();
-        else
+        else*/
         {
             animator_seting.ResetTrigger("is_set");
             // Проигрование анимации у моделей\\
@@ -60,10 +60,10 @@ public class Element_Bridge : MonoBehaviour
             children.GetComponent<Element_Bridge>().Enable_Modeil(enable);        
     }
 
-    private void Learn_Mode()
+    /*private void Learn_Mode()
     {
         // Открываем окно информации у игрока\\       
         GameManager.Instance.Show_Learn_Text_Image(action_build.Name_Object
             + "\n" + action_build.Use_Object + "\n" + action_build.Consists_modeil, action_build.Image_Modeil);
-    }
+    }*/
 }

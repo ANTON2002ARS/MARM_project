@@ -6,10 +6,6 @@ using UnityEngine;
 public class Action_build : ScriptableObject
 {
     public string Name_Object;
-    public string Name_Action;
-    public string Mistake;       
-    public string Use_Object;
-    public string Consists_modeil;
-    public GameObject Image_Modeil;
-
+    [TextArea()] public string Name_Action;
+    [TextArea()] public string Mistake;
 }
