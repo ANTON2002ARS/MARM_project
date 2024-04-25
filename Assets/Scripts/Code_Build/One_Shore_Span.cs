@@ -11,8 +11,7 @@ public class One_Shore_Span : MonoBehaviour
     [SerializeField] private Action_build for_pin_mistake;
     [SerializeField] private List<GameObject> Span_Block;
     [SerializeField] private List<GameObject> Support_Block;
-    //public bool Is_Shore_Completely;
-    public List<Action_build> list_mistakes { get => Check_Elements(); }
+    //public bool Is_Shore_Completely;   
     public void View_Element_Active(bool is_active)
     {
         foreach (var span in Span_Block)
@@ -65,28 +64,16 @@ public class One_Shore_Span : MonoBehaviour
                 Debug.Log("transform == null, for "+ folder.name);                
         }                         
     }
-    private List<Action_build> Check_Elements()
+    public void Check_Elements()
     {
-        List<Action_build> action_builds = new List<Action_build>(); 
-        List<Action_build> list_Lanyard = Check_One_Elements(folder_Lanyard, false);
-        if (list_Lanyard != null)
-            action_builds.AddRange(list_Lanyard);
-        List<Action_build> list_Wheels = Check_One_Elements(folder_Wheels, true);
-        if (list_Wheels != null)
-            action_builds.AddRange(list_Wheels);
-        List<Action_build> list_Pin = Check_One_Elements(folder_Pin, false);
-        if (list_Pin != null)
-            action_builds.AddRange(list_Pin);
-        List<Action_build> list_Shields = Check_One_Elements(folder_Shields, false);
-        if (list_Shields != null)
-            action_builds.AddRange(list_Shields);
-
-        return action_builds;
+        Check_One_Elements(folder_Lanyard, false);
+        Check_One_Elements(folder_Wheels, true);
+        Check_One_Elements(folder_Pin, false);
+        Check_One_Elements(folder_Shields, false);
     }
 
-    private List<Action_build> Check_One_Elements(GameObject folder, bool is_children)
+    private void Check_One_Elements(GameObject folder, bool is_children)
     {
-        List<Action_build> action_builds = null;
         // Получаем компонент Transform родительского объекта
         Transform folder_Transform = folder.transform;
         // Проходимся по всем дочерним объектам \\
@@ -95,14 +82,17 @@ public class One_Shore_Span : MonoBehaviour
             Transform transform = folder_Transform.GetChild(i);
             var obj = transform.gameObject.GetComponent<Element_Bridge>().Check_Active_Model();
             if (obj != null)
-                action_builds.Add(obj);
+            {
+                Controler_Build_Marm.Instance_Call_Control.list_mistakes.Add(obj);
+            }
             if (is_children)
             {
                 var obj_list = transform.gameObject.GetComponent<Element_Bridge>().Check_Active_Model_list();
                 if (obj_list != null)
-                    action_builds.AddRange(obj_list);
+                {
+                    Controler_Build_Marm.Instance_Call_Control.list_mistakes.AddRange(obj_list);
+                }
             }
         }
-        return action_builds;
     }
 }

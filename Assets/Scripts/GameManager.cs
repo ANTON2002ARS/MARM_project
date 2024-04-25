@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Canvas Menu;
     [SerializeField] private GameObject image_manual;
     [SerializeField] private Scrollbar scrollbar;
+    [SerializeField] private Button Show_Button;
+    [SerializeField] private Button Start_Button;
     public float speed_mouse;
     [Header("MARM")]
     [SerializeField] private GameObject Engineering_Intelligence_folder;
@@ -96,6 +98,10 @@ public class GameManager : MonoBehaviour
     // Проверяем что все элементы моста установлены \\
     private void Сheck_Other()
     {
+        // Показываем кнопку обзора\\\
+        Show_Button.gameObject.SetActive(true);
+        Start_Button.GetComponentInChildren<Text>().text = "Начать постройку моста";
+
         List<Action_build> list_mistakes = new List<Action_build>();
 
         list_mistakes.AddRange(Controler_Build_Marm.Instance_Call_Control.Сheck_Other());
@@ -104,8 +110,7 @@ public class GameManager : MonoBehaviour
         {
             status_text += m.Mistake + "\n";
         }
-        // Собираем строку для отчета перед игроком\\
-        //string status_text = "АНАЛИЗ ПРОЛЕТОВ МОСТА \n";        
+        // Собираем строку для отчета перед игроком\\             
         Show_Learn_Text_Image(status_text, null);
     }
     // убрать инжинерную разведку и добавить ошибку \\
@@ -121,15 +126,31 @@ public class GameManager : MonoBehaviour
     // Для кнопок \\
     public void Show_marm()
     {
-        Change_View();        
-        //Start_Test_Mode(false);
+        Change_View();
+        Controler_Build_Marm.Instance_Call_Control.Is_learning_Mode = true;
+        Controler_Build_Marm.Instance_Call_Control.View_Element_Set_true();
+        Engineering_Intelligence_folder.SetActive(false);
+
     }
 
     public void Start_test()
-    {
+    {        
+        var build = Build_Marm.GetComponent<Controler_Build_Marm>();
+        if (build.is_Build_Bridge)
+        {
+            Change_View();
+            return;
+        }
+        // Скрываем кнопку обзора моста\\
+        Show_Button.gameObject.SetActive(false);
+        Start_Button.GetComponentInChildren<Text>().text = "Продолжить постройку моста";
+                
         Change_View();
+        Engineering_Intelligence_folder.SetActive(true);
+        Controler_Build_Marm.Instance_Call_Control.Is_learning_Mode = false;
         // Начало постройки моста или показать мост \\
-        Build_Marm.GetComponent<Controler_Build_Marm>().Start_Build_Bridge();     
+        build.Start_Build_Bridge();
+        
         
     }
 

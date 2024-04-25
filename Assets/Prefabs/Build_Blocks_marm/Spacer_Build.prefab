@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7100303999122635209}
   - component: {fileID: 1068908932369926594}
+  - component: {fileID: 6051483583504396266}
   m_Layer: 0
   m_Name: Spacer_Build
   m_TagString: Untagged
@@ -54,6 +55,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 88, y: 59, z: 788}
   m_Center: {x: -1029, y: 2865, z: -398}
+--- !u!114 &6051483583504396266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4902495394073130253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 643f8935f5764244f8478cabff2fac83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action_build: {fileID: 0}
 --- !u!1 &7295851869223031328
 GameObject:
   m_ObjectHideFlags: 0

@@ -93,6 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8331937004219075167}
   - component: {fileID: 3339799593988529269}
+  - component: {fileID: 3879704773261857119}
   m_Layer: 0
   m_Name: Pin_With_Handle_Build
   m_TagString: Untagged
@@ -137,3 +138,16 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 250, y: 39, z: 92}
   m_Center: {x: -2974, y: 19.999998, z: -2471}
+--- !u!114 &3879704773261857119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2445536696718791950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 643f8935f5764244f8478cabff2fac83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action_build: {fileID: 0}

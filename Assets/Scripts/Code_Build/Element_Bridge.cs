@@ -38,7 +38,7 @@ public class Element_Bridge : MonoBehaviour
     }
     public List<Action_build> Check_Active_Model_list()
     {
-        List<Action_build> action_build = null;
+        List<Action_build> action_build = new List<Action_build>();
         foreach (var item in children_additional)
         {
             if (item != null)

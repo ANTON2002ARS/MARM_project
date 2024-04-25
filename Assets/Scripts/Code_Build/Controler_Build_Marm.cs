@@ -19,7 +19,7 @@ public class Controler_Build_Marm : MonoBehaviour
     public bool Is_learning_Mode;
     private Animator Animator_Installation;
     // Список ошибок\\
-    [SerializeField] private List<Action_build> list_mistakes = new List<Action_build>();
+    public List<Action_build> list_mistakes = new List<Action_build>();
     public static Controler_Build_Marm Instance_Call_Control { set; get; }
     private void Awake() => Instance_Call_Control = this;
     private void Start()
@@ -70,72 +70,6 @@ public class Controler_Build_Marm : MonoBehaviour
             case 9:
                 Animator_Installation.Play("Set_ramp_coastal_support_2");
                 break;
-        }
-
-        {
-            //case 0:
-            //        
-            //Animator_Installation.Play("Set_ramp_coastal_support_1");
-            //break;
-            //    case 1:
-            //        Check_Pin_First_Shore_Span();
-            //        Animator_Installation.Play("Set_span_support_1");
-            //break;
-            //    case 2:
-            //        Animator_Installation.Play("Set_span_support_2");
-            //break;
-            //    case 3:
-            //        Animator_Installation.Play("Set_span_support_3");
-            //break;
-            //    case 4:
-            //        Animator_Installation.Play("Set_span_support_4");
-            //break;
-            //    case 5:
-            //        Animator_Installation.Play("Set_span_support_5");
-            //break;
-            //    case 6:
-            //        Animator_Installation.Play("Set_span_support_6");
-            //break;
-            //    case 7:
-            //        Animator_Installation.Play("Set_span_support_7");
-            //break;
-            //    case 8:
-            //        Animator_Installation.Play("Set_span_support_8");
-            //break;
-            //    case 9:
-            //        Animator_Installation.Play("Set_ramp_coastal_support_2");
-            //break;
-
-            //case 0:                
-            //        Animator_Installation.Play("Set_Manipulator_coastal_support_1");
-            //    break;
-            //    case 1:
-            //        Animator_Installation.Play("Set_Manipulator_pos1");
-            //    break;
-            //    case 2:
-            //        Animator_Installation.Play("Set_Manipulator_pos2");
-            //    break;
-            //    case 3:
-            //        Animator_Installation.Play("Set_Manipulator_pos3");
-            //    break;
-            //    case 4:
-            //        Animator_Installation.Play("Set_Manipulator_pos4");
-            //    break;
-            //    case 5:
-            //        Animator_Installation.Play("Set_Manipulator_pos5");
-            //    break;
-            //    case 6:
-            //        Animator_Installation.Play("Set_Manipulator_pos6");
-            //    break;
-            //    case 7:
-            //        Animator_Installation.Play("Set_Manipulator_pos7");
-            //    break;
-            //    case 8:
-            //        Animator_Installation.Play("Set_Manipulator_pos8");
-            //    break;
-            //    case 9:
-            //        Animator_Installation.Play("Set_Manipulator_coastal_support_2");
-            //    break;
         }
 
         // Увеличение следующий пролет \\
@@ -212,32 +146,27 @@ public class Controler_Build_Marm : MonoBehaviour
         is_Build_Bridge = true;
         Crane_to_set = false;
     }
-
-    /*public void Stop_Build_Bridge()
-    {        
-        Animator_Installation.enabled = false;
-        to_start_position();
-        number_span = 0;
-        is_Build_Bridge = false;
-        Crane_to_set = false;
-    }*/
         
     public List<Action_build> Сheck_Other()
     {
         foreach (var span in Span_Marm)
         {
-            List<Action_build> action_s = span.GetComponent<One_Span_Marm>().list_mistakes;
-            if (action_s != null)
-                list_mistakes.AddRange(action_s);
+            span.GetComponent<One_Span_Marm>().Check_Elements();            
         }
         foreach (var shore in Shore_Marm)
         {
-            List<Action_build> action_s = shore.GetComponent<One_Shore_Span>().list_mistakes;
-            if (action_s != null)
-                list_mistakes.AddRange(action_s);
+            shore.GetComponent<One_Shore_Span>().Check_Elements();            
         }
         return list_mistakes;
     }
+
+    public bool is_Play_Anim()
+    {
+        float time = Animator_Installation.GetCurrentAnimatorStateInfo(0).normalizedTime;
+        Debug.Log("time: " + time);
+        return time < 1;
+    }
+    public void View_Element_Set_true() => View_Element_Active(true);
 
     private void View_Element_Active(bool is_active)
     {

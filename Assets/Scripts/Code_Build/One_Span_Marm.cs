@@ -11,7 +11,6 @@ public class One_Span_Marm : MonoBehaviour
     [SerializeField] private List<GameObject> Span_Block;
     [SerializeField] private List<GameObject> Support_Block;
     //public bool Is_Span_Completely;
-    public List<Action_build> list_mistakes { get => Check_Elements(); }
 
     public void View_Element_Active(bool is_active)
     {
@@ -56,6 +55,13 @@ public class One_Span_Marm : MonoBehaviour
 
 
     }
+    public void Check_Elements()
+    {        
+        Check_One_Elements(folder_Earings, false);        
+        Check_One_Elements(folder_Lanyard, false);
+        Check_One_Elements(folder_Wheels, true);        
+        Check_One_Elements(folder_Shields, false);
+    }
     private void Set_Active_Element(GameObject folder, bool is_active, bool is_children)
     {
         // Получаем компонент Transform родительского объекта
@@ -76,28 +82,10 @@ public class One_Span_Marm : MonoBehaviour
         }
     }
 
-    private List<Action_build> Check_Elements()
-    {
-        List<Action_build> action_builds = new List<Action_build>();
-        List<Action_build> list_Earings = Check_One_Elements(folder_Earings, false);
-        if (list_Earings != null)
-            action_builds.AddRange(list_Earings);
-        List<Action_build> list_Lanyard = Check_One_Elements(folder_Lanyard, false);
-        if (list_Lanyard != null)
-            action_builds.AddRange(list_Lanyard);
-        List<Action_build> list_Wheels = Check_One_Elements(folder_Wheels, true);
-        if (list_Wheels != null)
-            action_builds.AddRange(list_Wheels);
-        List<Action_build> list_Shields = Check_One_Elements(folder_Shields, false);
-        if (list_Shields != null)
-            action_builds.AddRange(list_Shields);
+    
 
-        return action_builds;
-    }
-
-    private List<Action_build> Check_One_Elements(GameObject folder, bool is_children)
-    {  
-        List<Action_build> action_build = null;
+    private void Check_One_Elements(GameObject folder, bool is_children)
+    {          
         // Получаем компонент Transform родительского объекта
         Transform folder_Transform = folder.transform;
         // Проходимся по всем дочерним объектам \\
@@ -106,14 +94,17 @@ public class One_Span_Marm : MonoBehaviour
             Transform transform = folder_Transform.GetChild(i);
             var obj = transform.gameObject.GetComponent<Element_Bridge>().Check_Active_Model();
             if (obj != null)
-                action_build.Add(obj);
+            {
+                Controler_Build_Marm.Instance_Call_Control.list_mistakes.Add(obj);
+            }                
             if (is_children)
             {
                 var obj_list = transform.gameObject.GetComponent<Element_Bridge>().Check_Active_Model_list();
                 if (obj_list != null)
-                    action_build.AddRange(obj_list);
+                {
+                    Controler_Build_Marm.Instance_Call_Control.list_mistakes.AddRange(obj_list);
+                }                   
             }
-        }
-        return action_build;
+        }        
     }
 }

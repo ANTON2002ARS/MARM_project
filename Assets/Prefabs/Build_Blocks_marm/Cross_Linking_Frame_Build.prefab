@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5761935649891799873}
   - component: {fileID: 1533029847101237631}
+  - component: {fileID: 5941641556399305005}
   m_Layer: 0
   m_Name: Cross_Linking_Frame_Build
   m_TagString: Untagged
@@ -54,6 +55,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1597, y: 1026, z: 192}
   m_Center: {x: -7199, y: 20244, z: -19959}
+--- !u!114 &5941641556399305005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2612211583983408127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 643f8935f5764244f8478cabff2fac83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action_build: {fileID: 0}
 --- !u!1 &4321003580586442075
 GameObject:
   m_ObjectHideFlags: 0
