@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private Canvas learn_canvas;
+    [SerializeField] private Text learn_text;
+    [SerializeField] private GameObject forder;
     [SerializeField] private Camera camera_player;
     [SerializeField] private float _speedWalk;
     [SerializeField] private float _gravity;
@@ -15,11 +19,13 @@ public class Player : MonoBehaviour
     private Vector3 _walkDirection;
     private Vector3 _velocity;
     private float _speed;
-        
+    public static Player Instance_P { get; private set; }
+    private void Awake() => Instance_P = this;
     private void Start()
     {
         _speed = _speedWalk;
         _characterController = GetComponent<CharacterController>();
+        Close_Learn_Text();
     }
 
     private void Update()
@@ -30,10 +36,9 @@ public class Player : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
         _walkDirection = transform.right * x + transform.forward * z;
-
-        /*if (Input.GetMouseButtonDown(0))
-            Debug.Log(camera_player.GetComponent<MouseLook>().Select_obj().name);*/
-
+        // Для закрытие текста у игрока нажатие Е \\
+        if (Input.GetKey(KeyCode.E))
+            Close_Learn_Text(); 
     }
 
     private void FixedUpdate()
@@ -41,6 +46,21 @@ public class Player : MonoBehaviour
         Walk(_walkDirection);
         DoGravity(_characterController.isGrounded);
     }
+
+    public void Show_Learn_Text_Image(string text, GameObject image_madel)
+    {
+        learn_canvas.enabled = true;
+        learn_text.text = text;
+        // Если не нужно то без модели \\
+        if (forder.transform.childCount == 1)
+            Destroy(forder.transform.GetChild(0).gameObject);
+        if (image_madel == null)
+            return;
+        GameObject Image = Instantiate(image_madel, transform.position, Quaternion.identity);
+        Image.transform.SetParent(forder.transform, false);
+    }
+
+    private void Close_Learn_Text() => learn_canvas.enabled = false;
 
     private void Walk(Vector3 direction)
     {

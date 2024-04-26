@@ -15,11 +15,9 @@ public class Controler_Build_Marm : MonoBehaviour
     // Кран нужно установить в позицию \\
     [SerializeField] private bool Crane_to_set;
     public bool Is_Open_Menu { set; private get; }
-    // Обучающий решим включен\\
-    public bool Is_learning_Mode;
-    private Animator Animator_Installation;
+    private Animator Animator_Installation = new Animator();
     // Список ошибок\\
-    public List<Action_build> list_mistakes = new List<Action_build>();
+    public List<Mistake_build> list_mistakes = new List<Mistake_build>();
     public static Controler_Build_Marm Instance_Call_Control { set; get; }
     private void Awake() => Instance_Call_Control = this;
     private void Start()
@@ -78,7 +76,8 @@ public class Controler_Build_Marm : MonoBehaviour
         if (number_span > 9)
         {
             is_Build_Bridge = false;
-            number_span = 0;            
+            number_span = 0;
+            GameManager.Instance.Call_Button();
         }
         // Нужно установить в позицию \\
         Crane_to_set = false;
@@ -98,7 +97,7 @@ public class Controler_Build_Marm : MonoBehaviour
         switch (number_span)
         {
             case 0:
-                Action_build action = GameManager.Instance.Close_Engineering_Intelligence();
+                Mistake_build action = GameManager.Instance.Close_Engineering_Intelligence();
                 if (action != null)
                     list_mistakes.Add(action);
                 Animator_Installation.Play("Set_Manipulator_coastal_support_1");
@@ -136,18 +135,16 @@ public class Controler_Build_Marm : MonoBehaviour
         Crane_to_set = true;
     }
 
-
     public void Start_Build_Bridge()
     {
         Animator_Installation.enabled = false;
-        to_start_position();
         View_Element_Active(false);
         number_span = 0;
         is_Build_Bridge = true;
         Crane_to_set = false;
     }
         
-    public List<Action_build> Сheck_Other()
+    public List<Mistake_build> Сheck_Other()
     {
         foreach (var span in Span_Marm)
         {
@@ -160,12 +157,12 @@ public class Controler_Build_Marm : MonoBehaviour
         return list_mistakes;
     }
 
-    public bool is_Play_Anim()
+    /*public bool is_Play_Anim()
     {
         float time = Animator_Installation.GetCurrentAnimatorStateInfo(0).normalizedTime;
         Debug.Log("time: " + time);
         return time < 1;
-    }
+    }*/
     public void View_Element_Set_true() => View_Element_Active(true);
 
     private void View_Element_Active(bool is_active)
@@ -184,16 +181,11 @@ public class Controler_Build_Marm : MonoBehaviour
         }
     }
         
-    private void to_start_position()
+    /*private void to_start_position()
     {
         Crane.GetComponent<Body_CRANE>().To_Start_Position();
-        Zil.GetComponent<Body_ZIL>().To_Start_Position();
-
-        foreach (var span in Span_Marm)
-            span.GetComponent<One_Span_Marm>().Start_Position_Elements();        
-        foreach (var shore in Shore_Marm)
-            shore.GetComponent<One_Shore_Span>().Start_Position_Elements();      
-    }
+        Zil.GetComponent<Body_ZIL>().To_Start_Position();   
+    }*/
 
     private void Check_Pin_First_Shore_Span()
     {

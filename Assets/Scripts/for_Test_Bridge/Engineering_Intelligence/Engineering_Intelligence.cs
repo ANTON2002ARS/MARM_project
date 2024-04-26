@@ -8,7 +8,7 @@ public class Engineering_Intelligence : MonoBehaviour
     private int amount_beacon;    
     [SerializeField] private List<GameObject> check_deep;    
     private int amount_line;      
-    public Action_build Mistake; 
+    public Mistake_build Mistake; 
     public static Engineering_Intelligence Instance_Engineering_Intelligence { get; private set; }
     private void Awake() => Instance_Engineering_Intelligence = this;
 
@@ -80,8 +80,7 @@ public class Engineering_Intelligence : MonoBehaviour
         if(amount_beacon >= point_installation.Count && amount_line >= check_deep.Count)
         {
             amount_beacon = 0;
-            amount_line = 0;
-            GameManager.Instance.Show_Learn_Text_Image("Инженерная разведка проведена правильно", null);
+            amount_line = 0;            
             GameManager.Instance.Check_Engineering_Intelligence();           
         }
     }

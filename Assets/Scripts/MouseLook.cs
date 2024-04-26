@@ -5,7 +5,7 @@ public class MouseLook : MonoBehaviour
     float Leigth = 30;
     Camera fps_cam;
 
-    [SerializeField] private float _sensitivity;
+    public static float Sensitivity; //250
     [SerializeField] private Transform _character;
     public bool can_rotation;
     private float _xRotation;
@@ -20,16 +20,15 @@ public class MouseLook : MonoBehaviour
 
     void Update()
     {   
-        Tracking();
-        _sensitivity = GameManager.Instance.speed_mouse;
+        Tracking();        
     }
 
     private void Tracking()
     {
         if (!can_rotation)
             return;
-        float mouseX = Input.GetAxis("Mouse X") * _sensitivity * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * _sensitivity * Time.deltaTime;
+        float mouseX = Input.GetAxis("Mouse X") * Sensitivity * Time.deltaTime;
+        float mouseY = Input.GetAxis("Mouse Y") * Sensitivity * Time.deltaTime;
         _xRotation -= mouseY;
         _xRotation = Mathf.Clamp(_xRotation, -90, 90);
         transform.localRotation = Quaternion.Euler(_xRotation, 0, 0);
