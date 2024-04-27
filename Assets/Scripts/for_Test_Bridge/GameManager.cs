@@ -9,7 +9,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject player;   
     [Header("Menu Game")]
     [SerializeField] private Camera air_camera;
-    [SerializeField] private GameObject Button_End_Test;    
+    [SerializeField] private GameObject Button_End_Test;
+    [SerializeField] private GameObject Button_Start_Test;
     [Header("MARM")]
     [SerializeField] private GameObject Engineering_Intelligence_folder;
     [SerializeField] private GameObject Build_Marm;
@@ -25,7 +26,8 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         MouseLook.Sensitivity = 250;
-        Start_test();
+        Engineering_Intelligence_folder.SetActive(false);
+        Button_End_Test.SetActive(false);
     }
     private  void Update()
     {
@@ -67,7 +69,7 @@ public class GameManager : MonoBehaviour
             status_text += m.Mistake + "\n";        
         // Собираем строку для отчета перед игроком\\
         player.GetComponent<Player>().Show_Learn_Text_Image(status_text, null);
-        Start_test();
+        Button_Start_Test.SetActive(true);
     }
     // убрать инжинерную разведку и добавить ошибку \\
     public Mistake_build Close_Engineering_Intelligence()
@@ -78,8 +80,9 @@ public class GameManager : MonoBehaviour
         return Engineering_Intelligence.Instance_Engineering_Intelligence.Mistake;
     }   
 
-    private void Start_test()
+    public void Start_test()
     {
+        Button_Start_Test.SetActive(false);
         Button_End_Test.SetActive(false);
         Engineering_Intelligence_folder.SetActive(true);
         // Начало постройки моста или показать мост \\

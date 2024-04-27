@@ -169,7 +169,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4543259527301355627}
   - component: {fileID: 7727843945404232163}
-  - component: {fileID: 4378489024996653210}
   m_Layer: 0
   m_Name: Blocks_prolit
   m_TagString: Untagged
@@ -214,19 +213,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 299.87057, y: 2116.2463, z: 9118.419}
   m_Center: {x: -385.86774, y: 1117.3662, z: 4760.865}
---- !u!114 &4378489024996653210
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2331043804474961222}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 074288ec9db12644ea409a036a45c39f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  action_build: {fileID: 11400000, guid: 5915816be2d853b4287fdbc6f2bf6bcc, type: 2}
 --- !u!1 &2600965510252513948
 GameObject:
   m_ObjectHideFlags: 0
@@ -272,7 +258,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6996586353491884733}
   - component: {fileID: 1790752509487291618}
-  - component: {fileID: 5861105790148961477}
   m_Layer: 0
   m_Name: Blocks_prolit
   m_TagString: Untagged
@@ -317,19 +302,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 299.87057, y: 2116.2463, z: 9118.419}
   m_Center: {x: -385.86774, y: 1117.3662, z: 4760.865}
---- !u!114 &5861105790148961477
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3410605381759994769}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 074288ec9db12644ea409a036a45c39f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  action_build: {fileID: 11400000, guid: 5915816be2d853b4287fdbc6f2bf6bcc, type: 2}
 --- !u!1 &4720145371054218444
 GameObject:
   m_ObjectHideFlags: 0
@@ -539,6 +511,7 @@ MonoBehaviour:
   - {fileID: 2331043804474961222}
   - {fileID: 3410605381759994769}
   Support_Block: []
+  Is_learning_status: 0
 --- !u!1 &7478489329871588848
 GameObject:
   m_ObjectHideFlags: 0

@@ -93,7 +93,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3054376709195710816}
   - component: {fileID: 7268359232015594214}
-  - component: {fileID: 2929696440718494225}
   m_Layer: 0
   m_Name: Rigel_Build
   m_TagString: Untagged
@@ -138,16 +137,3 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 210, y: 186, z: 2160}
   m_Center: {x: -54865, y: 18540, z: -17974}
---- !u!114 &2929696440718494225
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8289858440144948258}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 643f8935f5764244f8478cabff2fac83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  action_build: {fileID: 0}
