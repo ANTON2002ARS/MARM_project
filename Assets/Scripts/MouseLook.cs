@@ -12,6 +12,8 @@ public class MouseLook : MonoBehaviour
 
     void Start()
     {
+        if (Sensitivity < 1)
+            Sensitivity = 250;
         fps_cam = this.GetComponent<Camera>();
         can_rotation = true;
         Cursor.lockState = CursorLockMode.Locked;

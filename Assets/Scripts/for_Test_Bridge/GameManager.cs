@@ -24,8 +24,7 @@ public class GameManager : MonoBehaviour
     private void Awake() => Instance = this;
  
     private void Start()
-    {
-        MouseLook.Sensitivity = 250;
+    {         
         Engineering_Intelligence_folder.SetActive(false);
         Button_End_Test.SetActive(false);
     }
