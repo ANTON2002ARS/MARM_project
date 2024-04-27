@@ -274,7 +274,6 @@ GameObject:
   - component: {fileID: 5749349505214870101}
   - component: {fileID: 8659107041710153487}
   - component: {fileID: 6362374243748307232}
-  - component: {fileID: 3969492161876852431}
   m_Layer: 0
   m_Name: OPOR
   m_TagString: opor
@@ -342,19 +341,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2, y: 29.5, z: 15.400002}
   m_Center: {x: -2.27, y: 29.4, z: 26.7}
---- !u!114 &3969492161876852431
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7686228104812901157}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 074288ec9db12644ea409a036a45c39f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  action_build: {fileID: 11400000, guid: a018073b0c89fd6439f2569d9ba79c1d, type: 2}
 --- !u!1001 &2239947594362225652
 PrefabInstance:
   m_ObjectHideFlags: 0
