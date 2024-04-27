@@ -145,7 +145,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   model_children: {fileID: 1097526298865129696}
   children_additional: []
-  action_build: {fileID: 11400000, guid: ea2002710da44bd4eb8595b8919e94a7, type: 2}
+  mistaken_build: {fileID: 11400000, guid: 267d6965b10de29488bc3a4927ffba5b, type: 2}
+  data_learn: {fileID: 11400000, guid: 36e1feb0005e7584a8d27ad8664a9255, type: 2}
 --- !u!1001 &5820943323386571742
 PrefabInstance:
   m_ObjectHideFlags: 0

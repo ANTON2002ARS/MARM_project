@@ -91,7 +91,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   model_children: {fileID: 6297390421332404487}
   children_additional: []
-  action_build: {fileID: 11400000, guid: 954005cccc8ffa54088f4de44bcb5a56, type: 2}
+  mistaken_build: {fileID: 11400000, guid: 43df8984acfc09a46991c9a3bf3fadc8, type: 2}
+  data_learn: {fileID: 11400000, guid: 467787870aeb23441806c78bbd6e7ca9, type: 2}
 --- !u!1 &6297390421332404487
 GameObject:
   m_ObjectHideFlags: 0
