@@ -17,6 +17,17 @@ public class Switch_Scenes_GM : MonoBehaviour
     {
         SceneManager.LoadScene("Test_Bridge");
     }
+    public static void Test_Bridge_With_river()
+    {
+        GameManager.With_River = true;
+        Test_Bridge();
+    }
+
+    public static void Test_Search()
+    {
+        G_M.Is_Test = true;
+        Overview_bridge();
+    }
 
     public static void Overview_bridge()
     {

@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 810613325237742960}
   m_Layer: 0
   m_Name: Pin_Bank_Build
-  m_TagString: Untagged
+  m_TagString: pin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -136,8 +136,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 63, y: 600, z: 52}
-  m_Center: {x: -3807, y: 299, z: -6279}
+  m_Size: {x: 153.97491, y: 622.9465, z: 193.51196}
+  m_Center: {x: -3808.8005, y: 310.47327, z: -6279.9014}
 --- !u!114 &810613325237742960
 MonoBehaviour:
   m_ObjectHideFlags: 0

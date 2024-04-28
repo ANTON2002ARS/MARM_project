@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public static bool With_River;
     [Header("For Player")]
     [SerializeField] private GameObject player;   
     [Header("Menu Game")]
@@ -14,7 +15,9 @@ public class GameManager : MonoBehaviour
     [Header("MARM")]
     [SerializeField] private GameObject Engineering_Intelligence_folder;
     [SerializeField] private GameObject Build_Marm;
-    [SerializeField] private GameObject River;
+    [SerializeField] private GameObject River;    
+    [SerializeField] private GameObject Terrain_with_river;
+    [SerializeField] private GameObject Terrain_wist_road;
     [SerializeField] private List<GameObject> longitudinal_connection;
     // Для задержки при открытии меню\\
     private float delay = 1.2f; // Установите задержку в секундах
@@ -24,7 +27,18 @@ public class GameManager : MonoBehaviour
     private void Awake() => Instance = this;
  
     private void Start()
-    {         
+    {
+        if (With_River)
+        {
+            Terrain_with_river.SetActive(true);
+            Terrain_wist_road.SetActive(false);
+        }
+        else
+        {
+            Terrain_with_river.SetActive(false);
+            Terrain_wist_road.SetActive(true);
+            Active_longitudinal_(false);
+        }
         Engineering_Intelligence_folder.SetActive(false);
         Button_End_Test.SetActive(false);
     }
@@ -92,13 +106,12 @@ public class GameManager : MonoBehaviour
         build.Start_Build_Bridge();
     }    
 
-    /*public void Show_River() 
-    {
-        River.SetActive(!River.activeSelf);
+    private void Active_longitudinal_(bool is_active) 
+    {         
         // Для дороги \\
         foreach (var item in longitudinal_connection)
-            item.SetActive(!item.activeSelf);        
-    }*/
+            item.SetActive(is_active);        
+    }
 
     public void Open_Main_Menu() => Switch_Scenes_GM.Menu_Scene();
         
@@ -118,4 +131,7 @@ public class GameManager : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
         }
     }
+
+    private void OnDisable()=> With_River = false;
+     
 }

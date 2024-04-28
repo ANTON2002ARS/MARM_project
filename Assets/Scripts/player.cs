@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,14 +8,15 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private Canvas learn_canvas;
     [SerializeField] private Text learn_text;
-    [SerializeField] private GameObject forder;
+    [SerializeField] private GameObject folder;
     [SerializeField] private Camera camera_player;
     [SerializeField] private float _speedWalk;
     [SerializeField] private float _gravity;
     [SerializeField] private float _jumpPower;
     [SerializeField] private float _speedRun;
     [SerializeField] private GameObject Boat;
-
+    [SerializeField] private TMP_Text text_Task;
+    [SerializeField] private TMP_Text text_Error;
     private CharacterController _characterController;
     private Vector3 _walkDirection;
     private Vector3 _velocity;
@@ -26,6 +28,8 @@ public class Player : MonoBehaviour
         _speed = _speedWalk;
         _characterController = GetComponent<CharacterController>();
         Close_Learn_Text();
+        text_Task.enabled = false;
+        text_Error.enabled = false;
     }
 
     private void Update()
@@ -52,14 +56,42 @@ public class Player : MonoBehaviour
         learn_canvas.enabled = true;
         learn_text.text = text;
         // Åñëè íå íóæíî òî áåç ìîäåëè \\
-        if (forder.transform.childCount == 1)
-            Destroy(forder.transform.GetChild(0).gameObject);
+        if (folder.transform.childCount == 1)
+            Destroy(folder.transform.GetChild(0).gameObject);
         if (image_madel == null)
             return;
-        GameObject Image = Instantiate(image_madel, transform.position, Quaternion.identity);
-        Image.transform.SetParent(forder.transform, false);
+        GameObject Image = Instantiate(image_madel);
+        Image.transform.localPosition = Vector3.zero;
+        Image.transform.SetParent(folder.transform, false);
     }
 
+    public void Show_Task(string tag)
+    {        
+        string text = "Íàæìèòå íà: ";
+        if (tag == null)
+            text_Task.enabled = false;
+        else
+            text_Task.enabled = true;
+        text_Task.text = text + tag;
+    }
+
+    public void Show_Error(bool is_error)
+    {
+        text_Error.enabled = true;
+        if (is_error)
+        {
+            text_Error.text = "ÍÅ ÏÐÀÂÈËÜÍÎ";
+            text_Error.color = Color.red;
+        }
+        else
+        {
+            text_Error.text = " ÏÐÀÂÈËÜÍÎ";
+            text_Error.color = Color.green;
+        }
+        Invoke("Close_text_Error", 2f);
+    }
+
+    private void Close_text_Error() => text_Error.enabled = false;
     private void Close_Learn_Text() => learn_canvas.enabled = false;
 
     private void Walk(Vector3 direction)
