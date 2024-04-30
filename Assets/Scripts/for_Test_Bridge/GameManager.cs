@@ -31,11 +31,13 @@ public class GameManager : MonoBehaviour
         if (With_River)
         {
             Terrain_with_river.SetActive(true);
+            Engineering_Intelligence_folder.SetActive(true);
             Terrain_wist_road.SetActive(false);
         }
         else
         {
             Terrain_with_river.SetActive(false);
+            Engineering_Intelligence_folder.SetActive(false);
             Terrain_wist_road.SetActive(true);
             Active_longitudinal_(false);
         }
@@ -100,7 +102,8 @@ public class GameManager : MonoBehaviour
     {
         Button_Start_Test.SetActive(false);
         Button_End_Test.SetActive(false);
-        Engineering_Intelligence_folder.SetActive(true);
+        if(With_River)
+            Engineering_Intelligence_folder.SetActive(true);
         // Начало постройки моста или показать мост \\
         var build = Build_Marm.GetComponent<Controler_Build_Marm>();
         build.Start_Build_Bridge();
