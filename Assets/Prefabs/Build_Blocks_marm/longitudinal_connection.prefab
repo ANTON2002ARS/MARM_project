@@ -93,6 +93,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6853211936591232596}
   - component: {fileID: 3933186000320370652}
+  - component: {fileID: 7953276474508940073}
+  - component: {fileID: 2886970308341077442}
   m_Layer: 0
   m_Name: longitudinal_connection
   m_TagString: longitudinal_connection
@@ -137,3 +139,40 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 43.433723, y: 0.45971417, z: 0.5289265}
   m_Center: {x: 19.018497, y: -0.016831458, z: -0.12642743}
+--- !u!114 &7953276474508940073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6075548719079285998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d721321dac75e0f42a581cc3c2429d40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  model_children: {fileID: 3016678095193087031}
+  children_additional: []
+  mistaken_build: {fileID: 0}
+  data_learn: {fileID: 11400000, guid: b42c122f7ce0d2f4c956eff37629dfa5, type: 2}
+--- !u!95 &2886970308341077442
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6075548719079285998}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a71e6dc8a5bff0945b6fb3f1e7f7f242, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
