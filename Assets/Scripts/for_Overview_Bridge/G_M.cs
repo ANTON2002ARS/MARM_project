@@ -73,7 +73,7 @@ public class G_M : MonoBehaviour
     private void Fill_Dictionaries()
     {
         tagToName["axle"] = "цапфу";
-        tagToName["bashmag"] = "башмаг";
+        tagToName["bashmag"] = "башмак";
         tagToName["cross"] = "рамку поперечных связей";
         tagToName["finger"] = "палец";
         tagToName["pin"] = "закладной штырь";
