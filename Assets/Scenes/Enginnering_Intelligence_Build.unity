@@ -1009,6 +1009,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 292.5, y: 19.3, z: 101.09999}
+  m_LocalPosition: {x: 292.5, y: 18.8, z: 101.09999}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1017,6 +1018,8 @@ Transform:
   - {fileID: 2125607840}
   - {fileID: 1143120124}
   - {fileID: 2053832201}
+  - {fileID: 2053832201}
+  - {fileID: 1143120124}
   - {fileID: 1919174423}
   - {fileID: 712354189}
   - {fileID: 112613982}
@@ -1059,6 +1062,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  check_deep: []
   Mistake: {fileID: 11400000, guid: e4cb0ee3ac8890b4b990436b19355ac8, type: 2}
 --- !u!4 &938897449 stripped
 Transform:
@@ -1517,6 +1521,7 @@ PrefabInstance:
       propertyPath: On_Click.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 880814034}
+      objectReference: {fileID: 0}
     - target: {fileID: 5592199898763537240, guid: 73a9fab344b09df42baea108c275bd3c, type: 3}
       propertyPath: On_Click.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -1731,6 +1736,7 @@ PrefabInstance:
     - target: {fileID: 248877979879091223, guid: af45f7def963b0b4aaa9482f92e35d3f, type: 3}
       propertyPath: m_LocalPosition.y
       value: -5.3
+      value: -4.66
       objectReference: {fileID: 0}
     - target: {fileID: 248877979879091223, guid: af45f7def963b0b4aaa9482f92e35d3f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2215,6 +2221,7 @@ PrefabInstance:
       propertyPath: On_Click.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 880814034}
+      objectReference: {fileID: 0}
     - target: {fileID: 5592199898763537240, guid: 73a9fab344b09df42baea108c275bd3c, type: 3}
       propertyPath: On_Click.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Open_Main_Menu
@@ -2313,6 +2320,7 @@ PrefabInstance:
       propertyPath: On_Click.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 880814034}
+      objectReference: {fileID: 0}
     - target: {fileID: 5592199898763537240, guid: 73a9fab344b09df42baea108c275bd3c, type: 3}
       propertyPath: On_Click.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Start_test

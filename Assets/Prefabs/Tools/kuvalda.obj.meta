@@ -3,7 +3,12 @@ guid: 7df34812dda4ad642a5893591acd46cb
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kuvaldaMat
+    second: {fileID: 2100000, guid: f192f6c3fb85ce342ae392eaf17a10cc, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

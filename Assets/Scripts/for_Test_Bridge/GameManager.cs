@@ -19,9 +19,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject Terrain_with_river;
     [SerializeField] private GameObject Terrain_wist_road;
     [SerializeField] private List<GameObject> longitudinal_connection;
-    // Для задержки при открытии меню\\
+    /*// Для задержки при открытии меню\\
     private float delay = 1.2f; // Установите задержку в секундах
-    private float lastKeyPressTime; // Время последнего нажатия клавиши
+    private float lastKeyPressTime; // Время последнего нажатия клавиши*/
     // Для вызова кода \\
     public static GameManager Instance { get; private set; }
     private void Awake() => Instance = this;
@@ -63,6 +63,7 @@ public class GameManager : MonoBehaviour
             }   
         }*/ 
     }
+
     // Проверка что есть инжинерная разведка \\
     public void Check_Engineering_Intelligence()
     {
@@ -89,14 +90,6 @@ public class GameManager : MonoBehaviour
         player.GetComponent<Player>().Show_Learn_Text_Image(status_text, null);
         Button_Start_Test.SetActive(true);
     }
-    // убрать инжинерную разведку и добавить ошибку \\
-    public Mistake_build Close_Engineering_Intelligence()
-    {
-        if (!Engineering_Intelligence_folder.activeSelf)
-            return null;
-        Engineering_Intelligence_folder.SetActive(false);
-        return Engineering_Intelligence.Instance_Engineering_Intelligence.Mistake;
-    }   
 
     public void Start_test()
     {
