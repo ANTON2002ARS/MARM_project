@@ -23,6 +23,10 @@ public class Switch_Scenes_GM : MonoBehaviour
         Test_Bridge();
     }
 
+    public static void Enginnering_Intelligence()
+    {
+        SceneManager.LoadScene("Enginnering_Intelligence_Build");
+    }
     public static void Test_Search()
     {
         G_M.Is_Test = true;
