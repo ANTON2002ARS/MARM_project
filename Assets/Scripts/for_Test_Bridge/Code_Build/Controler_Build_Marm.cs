@@ -97,9 +97,6 @@ public class Controler_Build_Marm : MonoBehaviour
         switch (number_span)
         {
             case 0:
-                Mistake_build action = GameManager.Instance.Close_Engineering_Intelligence();
-                if (action != null)
-                    list_mistakes.Add(action);
                 Animator_Installation.Play("Set_Manipulator_coastal_support_1");
                 break;
             case 1:
