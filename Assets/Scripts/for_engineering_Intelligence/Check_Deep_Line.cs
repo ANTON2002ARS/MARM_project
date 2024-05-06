@@ -4,20 +4,17 @@ using UnityEngine;
 
 public class Check_Deep_Line : MonoBehaviour
 {
-    private Animator animation_Check;
     [SerializeField] private GameObject line;
-    public bool Is_Check { private set; get; }
+    
+    private Animator animation_Check;    
+    private bool Is_Check;
    
-
-    public delegate void ActionComplete(bool is_beacon);
-    public event ActionComplete OnActionComplet;
+    public delegate void Action_Status ();
+    public event Action_Status  Action_Check;
 
     void Start() 
     { 
         animation_Check = this.GetComponent<Animator>();
-       // animation_Check.enabled = false;
-        Is_Check = false;        
-        Material_Alpha_Set(line, 0.2f);
     }
 
     private void OnMouseUpAsButton()
@@ -25,20 +22,18 @@ public class Check_Deep_Line : MonoBehaviour
         Debug.Log("Choice object: " + this.name);
         if (Is_Check) return;
         Is_Check = true;       
-        Material_Alpha_Set(line, 1f);
-        //animation_Check.enabled = true;       
-        //animation_Check.Play("Animation_Check");
-        animation_Check.SetBool("Check", true);
+        Material_Alpha_Set(line, 1f);        
+        animation_Check.SetTrigger("set_deep");
+        line.SetActive(false);
         // Вызвать событие, когда действие завершилось
-        OnActionComplet?.Invoke(false);
-    
+        Action_Check?.Invoke();
     }
+
     public void Restart() 
     {
-        Is_Check = false;
-        // animation_Check.enabled = Is_Check;
-        animation_Check.SetBool("Check", false);
-        line.SetActive(!Is_Check);
+        Is_Check = false;         
+        animation_Check.ResetTrigger("set_deep");
+        line.SetActive(true);
         Material_Alpha_Set(line, 0.2f);        
     }
 

@@ -4,34 +4,45 @@ using UnityEngine;
 
 public class Set_Lighthouse : MonoBehaviour
 {
+    [SerializeField] private int number_beacon;
     [SerializeField] private GameObject beacon;
     [SerializeField] private GameObject flage;
-    public bool Is_set_beacon { private set; get; }
-    public delegate void ActionComplete(bool is_beacon);
-    public event ActionComplete OnActionComplet;
-    
-    private void Start() => Set_Beacon(false);
+
+    public bool Is_set_beacon { get; private set; }
+    public delegate void Action_Beacon(int number);
+    public event Action_Beacon call_check_beacon;
+    private Animator animator_beacon;
+
+    private void Start() 
+    {
+        animator_beacon = GetComponent<Animator>();
+    }
    
     private void OnMouseUpAsButton()
     {
-        Debug.Log("Choice object: " + this.name);
-         if (Is_set_beacon)
+        Debug.Log("Choice object: " + this.name);         
+        if (Is_set_beacon)
             return;
         Is_set_beacon = true;
-        Set_Beacon(true);
+        animator_beacon.SetTrigger("set_beacon");
+        flage.SetActive(false);
+        beacon.SetActive(true);
         // Вызвать событие, когда действие завершилось
-        OnActionComplet?.Invoke(true);
+        call_check_beacon?.Invoke(number_beacon);
     } 
 
     public void Restart() 
     { 
         Is_set_beacon = false;
-        Set_Beacon(Is_set_beacon);
+        if(animator_beacon != null)
+            animator_beacon.ResetTrigger("set_beacon");
+        else
+        {
+            animator_beacon = GetComponent<Animator>();
+            animator_beacon.ResetTrigger("set_beacon");
+        }
+        flage.SetActive(true);
+        beacon.SetActive(false);         
     }
-    
-    private void Set_Beacon(bool active)
-    {       
-        beacon.SetActive(active);
-        flage.SetActive(!active);
-    }
+        
 }

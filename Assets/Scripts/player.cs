@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     [SerializeField] private Canvas learn_canvas;
+    [SerializeField] private Image image_text;
     [SerializeField] private Text learn_text;
     [SerializeField] private GameObject folder;
     [SerializeField] private Camera camera_player;
@@ -17,6 +18,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject Boat;
     [SerializeField] private TMP_Text text_Task;
     [SerializeField] private TMP_Text text_Error;
+
     private CharacterController _characterController;
     private Vector3 _walkDirection;
     private Vector3 _velocity;
@@ -54,7 +56,22 @@ public class Player : MonoBehaviour
     public void Show_Learn_Text_Image(string text, GameObject image_madel)
     {
         learn_canvas.enabled = true;
+        image_text.enabled = true;
         learn_text.text = text;
+        // Если не нужно то без модели \\
+        if (folder.transform.childCount == 1)
+            Destroy(folder.transform.GetChild(0).gameObject);
+        if (image_madel == null)
+            return;
+        GameObject Image = Instantiate(image_madel);
+        Image.transform.localPosition = Vector3.zero;
+        Image.transform.SetParent(folder.transform, false);
+    }
+
+    public void Show_Image( GameObject image_madel)
+    {
+        learn_canvas.enabled = true;
+        image_text.enabled = false;
         // Если не нужно то без модели \\
         if (folder.transform.childCount == 1)
             Destroy(folder.transform.GetChild(0).gameObject);
@@ -88,6 +105,14 @@ public class Player : MonoBehaviour
             text_Error.text = " ПРАВИЛЬНО";
             text_Error.color = Color.green;
         }
+        Invoke("Close_text_Error", 2f);
+    }
+
+    public void Show_Error(string text)
+    {
+        text_Error.enabled = true;
+        text_Error.text = text;
+        text_Error.color = Color.black;
         Invoke("Close_text_Error", 2f);
     }
 
