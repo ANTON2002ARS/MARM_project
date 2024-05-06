@@ -5,17 +5,15 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public static bool With_River;
+    [SerializeField] public static bool With_River;
     [Header("For Player")]
     [SerializeField] private GameObject player;   
     [Header("Menu Game")]
     [SerializeField] private Camera air_camera;
     [SerializeField] private GameObject Button_End_Test;
     [SerializeField] private GameObject Button_Start_Test;
-    [Header("MARM")]
-    [SerializeField] private GameObject Engineering_Intelligence_folder;
-    [SerializeField] private GameObject Build_Marm;
-    [SerializeField] private GameObject River;    
+    [Header("MARM")]    
+    [SerializeField] private GameObject Build_Marm;     
     [SerializeField] private GameObject Terrain_with_river;
     [SerializeField] private GameObject Terrain_wist_road;
     [SerializeField] private List<GameObject> longitudinal_connection;
@@ -30,47 +28,18 @@ public class GameManager : MonoBehaviour
     {
         if (With_River)
         {
-            Terrain_with_river.SetActive(true);
-            Engineering_Intelligence_folder.SetActive(true);
-            Terrain_wist_road.SetActive(false);
+            Terrain_with_river.SetActive(true);                     
         }
         else
         {
-            Terrain_with_river.SetActive(false);
-            Engineering_Intelligence_folder.SetActive(false);
-            Terrain_wist_road.SetActive(true);
+            GameObject Image = Instantiate(Terrain_wist_road);
+            Image.transform.localPosition = Vector3.zero;
+            Destroy(Terrain_with_river);
             Active_longitudinal_(false);
-        }
-        Engineering_Intelligence_folder.SetActive(false);
+        }        
         Button_End_Test.SetActive(false);
     }
-    private  void Update()
-    {
-        /*// Отслеживание нажатии Enter \\
-        if (Input.GetKeyDown(KeyCode.Return)|| Input.GetKeyDown(KeyCode.KeypadEnter))
-        {
-            // Вызов проверки всех пролетов моста \\
-        }*/
-        // Нажатие Esc для открытие меню \\
-        /*if (Input.GetKey(KeyCode.Escape))
-        {
-            // Задержка нажатие \\
-            if (Time.time - lastKeyPressTime > delay)
-            {
-                Change_View();
-                // Обновите время последнего нажатия клавиши
-                lastKeyPressTime = Time.time; 
-            }   
-        }*/ 
-    }
-
-    // Проверка что есть инжинерная разведка \\
-    public void Check_Engineering_Intelligence()
-    {
-        // Что нужно для выполнение действий \\
-        player.GetComponent<Player>().Show_Learn_Text_Image("Инженерная разведка проведена правильно", null);        
-        Engineering_Intelligence_folder.SetActive(false);       
-    }
+    
 
     public void Call_Button() => Invoke("Show_Button_Ent_Test", 35f);
     private void Show_Button_Ent_Test() => Button_End_Test.SetActive(true);
@@ -82,10 +51,10 @@ public class GameManager : MonoBehaviour
         list_mistakes.AddRange(Controler_Build_Marm.Instance_Call_Control.Сheck_Other());
         string status_text = "АНАЛИЗ ПРОЛЕТОВ МОСТА \n" + "Список не установленый элементов: \n";
         foreach (var m in list_mistakes)
-        {
-            Debug.Log(status_text);
+        {            
             status_text += m.Mistake + "\n";
-        }                 
+        }     
+        Debug.Log(status_text);
         // Собираем строку для отчета перед игроком\\
         player.GetComponent<Player>().Show_Learn_Text_Image(status_text, null);
         Button_Start_Test.SetActive(true);
@@ -94,9 +63,7 @@ public class GameManager : MonoBehaviour
     public void Start_test()
     {
         Button_Start_Test.SetActive(false);
-        Button_End_Test.SetActive(false);
-        if(With_River)
-            Engineering_Intelligence_folder.SetActive(true);
+        Button_End_Test.SetActive(false);        
         // Начало постройки моста или показать мост \\
         var build = Build_Marm.GetComponent<Controler_Build_Marm>();
         build.Start_Build_Bridge();
@@ -127,7 +94,5 @@ public class GameManager : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
         }
     }
-
-    private void OnDisable()=> With_River = false;
-     
+       
 }

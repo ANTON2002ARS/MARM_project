@@ -12,10 +12,7 @@ public class Check_Deep_Line : MonoBehaviour
     public delegate void Action_Status ();
     public event Action_Status  Action_Check;
 
-    void Start() 
-    { 
-        animation_Check = this.GetComponent<Animator>();
-    }
+    void Start() => animation_Check = this.GetComponent<Animator>();  
 
     private void OnMouseUpAsButton()
     {
@@ -31,8 +28,14 @@ public class Check_Deep_Line : MonoBehaviour
 
     public void Restart() 
     {
-        Is_Check = false;         
-        animation_Check.ResetTrigger("set_deep");
+        Is_Check = false;  
+        if(animation_Check != null)
+            animation_Check.ResetTrigger("set_deep");
+        else
+        {
+            animation_Check = this.GetComponent<Animator>();
+            animation_Check.ResetTrigger("set_deep");
+        }
         line.SetActive(true);
         Material_Alpha_Set(line, 0.2f);        
     }
