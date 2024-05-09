@@ -18,8 +18,10 @@ public class Controler_Build_Marm : MonoBehaviour
     private Animator Animator_Installation = new Animator();
     // Список ошибок\\
     public List<Mistake_build> list_mistakes = new List<Mistake_build>();
+
     public static Controler_Build_Marm Instance_Call_Control { set; get; }
     private void Awake() => Instance_Call_Control = this;
+
     private void Start()
     {
         Crane_to_set = false;
@@ -66,6 +68,9 @@ public class Controler_Build_Marm : MonoBehaviour
                 Animator_Installation.Play("Set_span_support_8");
                 break;
             case 9:
+                Animator_Installation.Play("Set_span_support_9");
+                break;
+            case 10:
                 Animator_Installation.Play("Set_ramp_coastal_support_2");
                 break;
         }
@@ -73,7 +78,7 @@ public class Controler_Build_Marm : MonoBehaviour
         // Увеличение следующий пролет \\
         number_span++;
         // Все пролеты установлены \\
-        if (number_span > 9)
+        if (number_span > 10)
         {
             is_Build_Bridge = false;
             number_span = 0;
@@ -125,6 +130,9 @@ public class Controler_Build_Marm : MonoBehaviour
                 Animator_Installation.Play("Set_Manipulator_pos8");
                 break;
             case 9:
+                Animator_Installation.Play("Set_Manipulator_pos9");
+                break;
+            case 10:
                 Animator_Installation.Play("Set_Manipulator_coastal_support_2");
                 break;
         }
@@ -153,13 +161,7 @@ public class Controler_Build_Marm : MonoBehaviour
         }
         return list_mistakes;
     }
-
-    /*public bool is_Play_Anim()
-    {
-        float time = Animator_Installation.GetCurrentAnimatorStateInfo(0).normalizedTime;
-        Debug.Log("time: " + time);
-        return time < 1;
-    }*/
+        
     public void View_Element_Set_true() => View_Element_Active(true);
 
     private void View_Element_Active(bool is_active)
@@ -177,12 +179,6 @@ public class Controler_Build_Marm : MonoBehaviour
             span.SetActive(is_active);
         }
     }
-        
-    /*private void to_start_position()
-    {
-        Crane.GetComponent<Body_CRANE>().To_Start_Position();
-        Zil.GetComponent<Body_ZIL>().To_Start_Position();   
-    }*/
 
     private void Check_Pin_First_Shore_Span()
     {
@@ -193,7 +189,5 @@ public class Controler_Build_Marm : MonoBehaviour
             if (checkPinResult != null)
                 list_mistakes.Add(checkPinResult);
         }        
-    }
-    //Show_Learn_Text_Image("Все аппарели и пролеты установлены. \n Для проверки, что все элементы установлены, нажать Enter", null);
-
+    } 
 }

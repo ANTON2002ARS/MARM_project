@@ -47,6 +47,15 @@ public class Player : MonoBehaviour
             Close_Learn_Text(); 
     }
 
+    /*private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("tag: " + other.tag + " name: " + other.name);
+
+        if (other.tag == "river")       
+            Boat.SetActive(true);       
+        else
+            Boat.SetActive(false);
+    }*/
     private void FixedUpdate()
     {
         Walk(_walkDirection);
@@ -148,5 +157,9 @@ public class Player : MonoBehaviour
         _characterController.height = canSit ? 1f : 2f;
     }
 
-    public void Show_Boat(bool is_show) => Boat.SetActive(is_show);
+    public void Show_Boat(bool is_show) 
+    {
+        if(GameManager.With_River)
+            Boat.SetActive(is_show); 
+    }
 }
