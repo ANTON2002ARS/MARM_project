@@ -163,8 +163,6 @@ public class Player : MonoBehaviour
         if(GameManager.With_River)
             Boat.SetActive(is_show);
         else if(SceneManager.GetActiveScene().name == "Enginnering_Intelligence_Build")
-        {
-            Boat.SetActive(is_show);
-        }
+            Boat.SetActive(is_show);       
     }
 }
