@@ -13,8 +13,10 @@ public class Engineering_Intelligence : MonoBehaviour
     [SerializeField] private GameObject rope;
     [SerializeField] private GameObject rope_line;
     [Header("<________>")]
-    [SerializeField] private GameObject Button_Plans;
-    [SerializeField] private GameObject Button_Table;
+    [SerializeField] private GameObject Button_Plans_1;
+    [SerializeField] private GameObject Button_Plans_2;
+    [SerializeField] private GameObject Button_Table_1;
+    [SerializeField] private GameObject Button_Table_2;
     [SerializeField] private GameObject plane_bridge;
     [SerializeField] private GameObject table_time;
     [SerializeField] private GameObject Player;
@@ -80,8 +82,10 @@ public class Engineering_Intelligence : MonoBehaviour
 
     private void Active_Button(bool active)
     {
-        Button_Plans.SetActive(active);
-        Button_Table.SetActive(active);
+        Button_Plans_1.SetActive(active);
+        Button_Table_1.SetActive(active);
+        Button_Plans_2.SetActive(active);
+        Button_Table_2.SetActive(active);
     }
 
     public void Check_Beacon(int number)

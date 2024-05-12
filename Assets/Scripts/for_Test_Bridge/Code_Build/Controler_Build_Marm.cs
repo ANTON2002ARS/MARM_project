@@ -22,12 +22,8 @@ public class Controler_Build_Marm : MonoBehaviour
     public static Controler_Build_Marm Instance_Call_Control { set; get; }
     private void Awake() => Instance_Call_Control = this;
 
-    private void Start()
-    {
-        Crane_to_set = false;
-        is_Build_Bridge = false;
-        Animator_Installation = this.GetComponent<Animator>();        
-    }
+    private void Start() => Animator_Installation = this.GetComponent<Animator>();     
+   
     public void Install_Span()
     {
         if (Is_Open_Menu)
@@ -82,7 +78,8 @@ public class Controler_Build_Marm : MonoBehaviour
         {
             is_Build_Bridge = false;
             number_span = 0;
-            GameManager.Instance.Call_Button();
+            GameManager.Instance.Call_Button_1();
+            GameManager.Instance.Call_Button_2();
         }
         // Нужно установить в позицию \\
         Crane_to_set = false;
@@ -142,6 +139,8 @@ public class Controler_Build_Marm : MonoBehaviour
 
     public void Start_Build_Bridge()
     {
+        if(Animator_Installation == null ) 
+            Animator_Installation = this.GetComponent<Animator>();
         Animator_Installation.enabled = false;
         View_Element_Active(false);
         number_span = 0;

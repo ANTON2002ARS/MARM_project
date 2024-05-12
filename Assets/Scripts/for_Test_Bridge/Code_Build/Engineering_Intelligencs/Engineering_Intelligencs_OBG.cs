@@ -4,15 +4,6 @@ using UnityEngine;
 
 public class Engineering_Intelligencs_OBG : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [SerializeField] private Engineering_Intelligencs_Line engineering_intelligencs;
+    private void OnMouseUpAsButton() => engineering_intelligencs.On_Click();   
 }

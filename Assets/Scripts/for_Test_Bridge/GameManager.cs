@@ -10,8 +10,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject player;   
     [Header("Menu Game")]
     [SerializeField] private Camera air_camera;
-    [SerializeField] private GameObject Button_End_Test;
-    [SerializeField] private GameObject Button_Start_Test;
+    [SerializeField] private GameObject Button_End_Test_1;
+    [SerializeField] private GameObject Button_End_Test_2;
     [Header("MARM")]    
     [SerializeField] private GameObject Build_Marm;     
     [SerializeField] private GameObject Terrain_with_river;
@@ -36,13 +36,16 @@ public class GameManager : MonoBehaviour
             Image.transform.localPosition = Vector3.zero;
             Destroy(Terrain_with_river);
             Active_longitudinal_(false);
-        }        
-        Button_End_Test.SetActive(false);
-    }
-    
+        }           
+        //Button_End_Test.SetActive(false);
+        Start_test();
+    }    
 
-    public void Call_Button() => Invoke("Show_Button_Ent_Test", 35f);
-    private void Show_Button_Ent_Test() => Button_End_Test.SetActive(true);
+    public void Call_Button_1() => Invoke("Show_Button_Ent_Test_1", 35f);
+    public void Call_Button_2() => Invoke("Show_Button_Ent_Test_2", 35f);
+
+    private void Show_Button_Ent_Test_1() => Button_End_Test_1.SetActive(true);
+    private void Show_Button_Ent_Test_2() => Button_End_Test_2.SetActive(true);
 
     // Проверяем что все элементы моста установлены \\
     public void Сheck_Other()
@@ -57,13 +60,12 @@ public class GameManager : MonoBehaviour
         Debug.Log(status_text);
         // Собираем строку для отчета перед игроком\\
         player.GetComponent<Player>().Show_Learn_Text_Image(status_text, null);
-        Button_Start_Test.SetActive(true);
     }
 
     public void Start_test()
     {
-        Button_Start_Test.SetActive(false);
-        Button_End_Test.SetActive(false);        
+        Button_End_Test_1.SetActive(false);
+        Button_End_Test_2.SetActive(false);        
         // Начало постройки моста или показать мост \\
         var build = Build_Marm.GetComponent<Controler_Build_Marm>();
         build.Start_Build_Bridge();

@@ -9,11 +9,9 @@ public class Element_Bridge : MonoBehaviour
     [SerializeField] private Mistake_build mistaken_build;
     [SerializeField] private Data_Element data_learn;
     private Animator animator_seting;
+
+    private void Start() => animator_seting = GetComponent<Animator>();
     
-    private void Start()
-    {        
-        animator_seting = GetComponent<Animator>();
-    }
     private void OnMouseUpAsButton()
     {
         Debug.Log("Choice object: " + this.name);
