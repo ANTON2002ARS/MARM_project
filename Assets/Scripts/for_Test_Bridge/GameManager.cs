@@ -51,15 +51,20 @@ public class GameManager : MonoBehaviour
     public void Сheck_Other()
     {        
         List<Mistake_build> list_mistakes = new List<Mistake_build>();
+
         list_mistakes.AddRange(Controler_Build_Marm.Instance_Call_Control.Сheck_Other());
-        string status_text = "АНАЛИЗ ПРОЛЕТОВ МОСТА \n" + "Список не установленый элементов: \n";
-        foreach (var m in list_mistakes)
-        {            
-            status_text += m.Mistake + "\n";
-        }     
-        Debug.Log(status_text);
+        if(list_mistakes.Count ==0)
+        {
+            player.GetComponent<Player>().Show_Learn_Text_Image("Тест проеден все элементы моста установлены", null);
+            return;
+        }
+        //string status_text = "АНАЛИЗ ПРОЛЕТОВ МОСТА \n" + "Список не установленый элементов: \n";
         // Собираем строку для отчета перед игроком\\
-        player.GetComponent<Player>().Show_Learn_Text_Image(status_text, null);
+        /*foreach (var m in list_mistakes)
+            status_text += m.Mistake + "\n";           
+        Debug.Log(status_text);*/
+
+        player.GetComponent<Player>().Show_List_Mistake(list_mistakes);
     }
 
     public void Start_test()

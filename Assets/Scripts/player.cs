@@ -18,7 +18,10 @@ public class Player : MonoBehaviour
     [SerializeField] private float _speedRun;
     [SerializeField] private GameObject Boat;
     [SerializeField] private TMP_Text text_Task;
-    [SerializeField] private TMP_Text text_Error;
+    [SerializeField] private TMP_Text text_Error;     
+    [SerializeField] private GameObject Scroll_View;
+    [SerializeField] private GameObject Content;
+    [SerializeField] private GameObject String_text;    
 
     private CharacterController _characterController;
     private Vector3 _walkDirection;
@@ -33,6 +36,7 @@ public class Player : MonoBehaviour
         Close_Learn_Text();
         text_Task.enabled = false;
         text_Error.enabled = false;
+        Scroll_View.SetActive(false);
     }
 
     private void Update()
@@ -45,23 +49,41 @@ public class Player : MonoBehaviour
         _walkDirection = transform.right * x + transform.forward * z;
         // Для закрытие текста у игрока нажатие Е \\
         if (Input.GetKey(KeyCode.E))
-            Close_Learn_Text(); 
+        {
+            Close_Learn_Text();
+            Scroll_View.SetActive(false);
+            Cursor.lockState = CursorLockMode.Locked;
+        }
     }
-
-    /*private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("tag: " + other.tag + " name: " + other.name);
-
-        if (other.tag == "river")       
-            Boat.SetActive(true);       
-        else
-            Boat.SetActive(false);
-    }*/
+        
     private void FixedUpdate()
     {
         Walk(_walkDirection);
         DoGravity(_characterController.isGrounded);
     }
+
+    public void Show_List_Mistake(List<Mistake_build> list_mistakes)
+    {
+        Cursor.lockState = CursorLockMode.None;
+        RectTransform contentRectTransform = Content.GetComponent<RectTransform>();
+        learn_canvas.enabled = true;
+        Scroll_View.SetActive(true);          
+        Instantiate(String_text, Content.transform);   
+        var analysis = Instantiate(String_text, Content.transform);
+        analysis.GetComponent<Text>().text = "АНАЛИЗ ПРОЛЕТОВ МОСТА";
+        var analysis_text = Instantiate(String_text, Content.transform);
+        analysis_text.GetComponent<Text>().text = "Список не установленый элементов:";
+
+        float Height = 35f;
+        contentRectTransform.sizeDelta = new Vector2(contentRectTransform.sizeDelta.x, contentRectTransform.sizeDelta.y + Height*3);
+
+        foreach (Mistake_build itemText in list_mistakes)
+        {
+            GameObject Item = Instantiate(String_text, Content.transform);
+            Item.GetComponent<Text>().text = itemText.Mistake;            
+            contentRectTransform.sizeDelta = new Vector2(contentRectTransform.sizeDelta.x, contentRectTransform.sizeDelta.y + Height);
+        }
+    }     
 
     public void Show_Learn_Text_Image(string text, GameObject image_madel)
     {
