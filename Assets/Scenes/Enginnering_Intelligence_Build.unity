@@ -818,7 +818,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 695168021628620198, guid: 02f05f915ed55f44680abc6af7b33503, type: 3}
       propertyPath: m_text
-      value: "1 \u043C\u0435\u0442\u0440\u0430"
+      value: "2 \u043C\u0435\u0442\u0440\u0430"
       objectReference: {fileID: 0}
     - target: {fileID: 2154813814011506569, guid: 02f05f915ed55f44680abc6af7b33503, type: 3}
       propertyPath: m_LocalScale.x
@@ -1182,7 +1182,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7711689063080809678}
+  - {fileID: 1776862175}
   - {fileID: 2125607840}
+  - {fileID: 723583133}
   - {fileID: 1430355564}
   - {fileID: 1143120124}
   - {fileID: 2053832201}
@@ -1196,8 +1198,6 @@ Transform:
   - {fileID: 31303230}
   - {fileID: 1483369964}
   - {fileID: 1077895844}
-  - {fileID: 1776862175}
-  - {fileID: 723583133}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &937717760
@@ -1894,6 +1894,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 937717759}
     m_Modifications:
+    - target: {fileID: 695168021628620198, guid: 02f05f915ed55f44680abc6af7b33503, type: 3}
+      propertyPath: m_text
+      value: "1 \u043C\u0435\u0442\u0440"
+      objectReference: {fileID: 0}
     - target: {fileID: 2178830503964925765, guid: 02f05f915ed55f44680abc6af7b33503, type: 3}
       propertyPath: m_LocalPosition.x
       value: 235.35
