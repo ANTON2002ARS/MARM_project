@@ -150,6 +150,9 @@ public class Controler_Build_Marm : MonoBehaviour
         
     public List<Mistake_build> Ñheck_Other()
     {
+        if(list_mistakes.Count >= 2)
+            list_mistakes.Clear();
+
         foreach (var span in Span_Marm)
         {
             span.GetComponent<One_Span_Marm>().Check_Elements();            
