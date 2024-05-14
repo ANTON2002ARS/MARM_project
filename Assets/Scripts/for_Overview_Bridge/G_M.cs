@@ -31,7 +31,8 @@ public class G_M : MonoBehaviour
     }    
     
     private void Test_Search_Element()
-    {        
+    {
+        Debug.Log("Start test");
         Is_Test = true;
         Tag_Active = Get_Random_key();
         Player.Instance_P.Show_Task(tagToName[Tag_Active]);

@@ -66,8 +66,12 @@ public class Player : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
         RectTransform contentRectTransform = Content.GetComponent<RectTransform>();
+        Transform Tramsform_Content = Content.GetComponent<Transform>();
+        foreach (Transform item in Tramsform_Content)
+            Destroy(item.gameObject);
+        
         learn_canvas.enabled = true;
-        Scroll_View.SetActive(true);          
+        Scroll_View.SetActive(true);        
         Instantiate(String_text, Content.transform);   
         var analysis = Instantiate(String_text, Content.transform);
         analysis.GetComponent<Text>().text = "¿Õ¿À»« œ–ŒÀ≈“Œ¬ ÃŒ—“¿";
@@ -115,7 +119,7 @@ public class Player : MonoBehaviour
     }
 
     public void Show_Task(string tag)
-    {        
+    { 
         string text = "Õ‡ÊÏËÚÂ Ì‡: ";
         if (tag == null)
             text_Task.enabled = false;
