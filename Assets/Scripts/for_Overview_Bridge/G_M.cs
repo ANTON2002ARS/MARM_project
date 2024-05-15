@@ -87,7 +87,7 @@ public class G_M : MonoBehaviour
         tagToName["aparel"] = "аппарель (марки А1)";
         tagToName["earring"] = "серьгу (марки П1-2)";
         tagToName["longitudinal_connection"] = "гибкую продольную тормозную связь (марки СВ1)";
-        tagToName["railihg_stand"] = "перильную стойку (марки К3)";
+        tagToName["railing_stand"] = "перильную стойку (марки К3)";
         tagToName["shield"] = "деформационый щит (марки Д1)";
         tagToName["wheel"] = "колесоотбой (марки К1)";
         tagToName["blocks_prolit"] = "блок пролетного строение (марки П1)";

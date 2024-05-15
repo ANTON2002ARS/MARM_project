@@ -44,6 +44,12 @@ public class Switch_Scenes_GM : MonoBehaviour
         SceneManager.LoadScene("Menu_Scene");
     }
 
+    public void Open_Manual_PDF()
+    {
+         
+
+    }
+
     public void Open_Manual() => image_manual.SetActive(!image_manual.activeSelf);
     public void Exit_game() => Application.Quit();
 
