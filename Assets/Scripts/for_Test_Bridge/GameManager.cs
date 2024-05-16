@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public static bool With_River;
+    [SerializeField] public static bool With_River;
     [Header("For Player")]
     [SerializeField] private GameObject player;   
     [Header("Menu Game")]
@@ -26,15 +26,12 @@ public class GameManager : MonoBehaviour
  
     private void Start()
     {
-        Debug.Log("With_River: " + With_River);
         if (With_River)
         {
-            Terrain_with_river.SetActive(true);
-            Debug.Log("wiver");
+            Terrain_with_river.SetActive(true);                     
         }
         else
         {
-            Debug.Log("road");
             GameObject Image = Instantiate(Terrain_wist_road);
             Image.transform.localPosition = Vector3.zero;
             Destroy(Terrain_with_river);
