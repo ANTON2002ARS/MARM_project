@@ -60,6 +60,9 @@ public class One_Span_Marm : MonoBehaviour
     private void Check_Engineering_Intelligence(GameObject folder)
     {
         // Получаем компонент Transform родительского объекта
+        if (folder == null)
+            return;
+
         Transform folder_Transform = folder.transform;
         // Проходимся по всем дочерним объектам \\
         for (int i = 0; i < folder_Transform.childCount; i++)

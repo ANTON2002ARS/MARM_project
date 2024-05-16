@@ -1141,7 +1141,9 @@ MonoBehaviour:
   Build_Marm: {fileID: 6431930831133495491}
   Terrain_with_river: {fileID: 922566488}
   Terrain_wist_road: {fileID: 5223746157724898548, guid: 091c90c5f418bb74b82af0541a4658f6, type: 3}
-  longitudinal_connection: []
+  longitudinal_connection:
+  - {fileID: 1213242527}
+  - {fileID: 1984585195}
 --- !u!4 &1156637176
 Transform:
   m_ObjectHideFlags: 0
@@ -1157,6 +1159,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1213242527 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1067685782858227673, guid: dbc47eb48e5c70c45a73b65e73fa5b54, type: 3}
+  m_PrefabInstance: {fileID: 930130781458011483}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1406014637 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6002633697194895643, guid: dbc47eb48e5c70c45a73b65e73fa5b54, type: 3}
@@ -1449,6 +1456,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4091897721707008785, guid: dbc47eb48e5c70c45a73b65e73fa5b54, type: 3}
   m_PrefabInstance: {fileID: 8610373693336906202}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1984585195 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3333945056600754884, guid: dbc47eb48e5c70c45a73b65e73fa5b54, type: 3}
+  m_PrefabInstance: {fileID: 930130781458011483}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2008647982
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1658,6 +1670,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8164016340500413964, guid: 949a63c7156e46d49abc3e0cc6bbf2d8, type: 3}
       propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8292442651476687823, guid: 949a63c7156e46d49abc3e0cc6bbf2d8, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8834848014815856855, guid: 949a63c7156e46d49abc3e0cc6bbf2d8, type: 3}

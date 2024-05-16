@@ -35,9 +35,14 @@ public class GameManager : MonoBehaviour
             GameObject Image = Instantiate(Terrain_wist_road);
             Image.transform.localPosition = Vector3.zero;
             Destroy(Terrain_with_river);
-            Active_longitudinal_(false);
+            //Active_longitudinal_(false);
+            foreach (var ls in longitudinal_connection)
+            {
+                if(ls != null)
+                    Destroy(ls);
+            }
         }           
-        //Button_End_Test.SetActive(false);
+        
         Start_test();
     }    
 
