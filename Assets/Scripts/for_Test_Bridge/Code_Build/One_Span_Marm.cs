@@ -8,6 +8,8 @@ public class One_Span_Marm : MonoBehaviour
     [SerializeField] private GameObject folder_Lanyard;
     [SerializeField] private GameObject folder_Wheels;
     [SerializeField] private GameObject folder_Shields;
+    [SerializeField] private GameObject folder_1_Engineering_Intelligence;
+    [SerializeField] private GameObject folder_2_Engineering_Intelligence;
     [SerializeField] private List<GameObject> Span_Block;
     [SerializeField] private List<GameObject> Support_Block;
     public bool Is_learning_status;
@@ -31,6 +33,9 @@ public class One_Span_Marm : MonoBehaviour
         Check_One_Elements(folder_Lanyard, false);
         Check_One_Elements(folder_Wheels, true);        
         Check_One_Elements(folder_Shields, false);
+        Check_Engineering_Intelligence(folder_1_Engineering_Intelligence);
+        if(folder_2_Engineering_Intelligence != null)
+            Check_Engineering_Intelligence(folder_2_Engineering_Intelligence);
     }
     private void Set_Active_Element(GameObject folder, bool is_active, bool is_children)
     {
@@ -52,6 +57,22 @@ public class One_Span_Marm : MonoBehaviour
         }
     }
 
+    private void Check_Engineering_Intelligence(GameObject folder)
+    {
+        // Получаем компонент Transform родительского объекта
+        if (folder == null)
+            return;
+
+        Transform folder_Transform = folder.transform;
+        // Проходимся по всем дочерним объектам \\
+        for (int i = 0; i < folder_Transform.childCount; i++)
+        {
+            Transform transform = folder_Transform.GetChild(i);
+            var EI = transform.gameObject.GetComponent<Engineering_Intelligencs_Line>();
+            if(EI.is_set == false)
+                Controler_Build_Marm.Instance_Call_Control.list_mistakes.Add(EI.Get_Mistake);
+        }
+    }
 
     private void Check_One_Elements(GameObject folder, bool is_children)
     {          
