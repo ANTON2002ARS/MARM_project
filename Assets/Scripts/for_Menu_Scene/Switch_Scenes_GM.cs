@@ -1,9 +1,11 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Diagnostics;
 
 public class Switch_Scenes_GM : MonoBehaviour
-{
+{    
+    [SerializeField] private GameObject Button_Manual; 
     [SerializeField] private Scrollbar scrollbar;
     [SerializeField] private GameObject image_manual;
 
@@ -15,12 +17,13 @@ public class Switch_Scenes_GM : MonoBehaviour
     }
     public static void Test_Bridge()
     {
+        GameManager.With_River = false;
         SceneManager.LoadScene("Test_Bridge");
     }
     public static void Test_Bridge_With_river()
     {
         GameManager.With_River = true;
-        Test_Bridge();
+        SceneManager.LoadScene("Test_Bridge");
     }
 
     public static void Enginnering_Intelligence()
@@ -43,6 +46,7 @@ public class Switch_Scenes_GM : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         SceneManager.LoadScene("Menu_Scene");
     }
+       
 
     public void Open_Manual() => image_manual.SetActive(!image_manual.activeSelf);
     public void Exit_game() => Application.Quit();

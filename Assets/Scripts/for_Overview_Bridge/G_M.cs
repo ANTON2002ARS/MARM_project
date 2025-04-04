@@ -31,7 +31,8 @@ public class G_M : MonoBehaviour
     }    
     
     private void Test_Search_Element()
-    {        
+    {
+        Debug.Log("Start test");
         Is_Test = true;
         Tag_Active = Get_Random_key();
         Player.Instance_P.Show_Task(tagToName[Tag_Active]);
@@ -72,24 +73,26 @@ public class G_M : MonoBehaviour
     }
     private void Fill_Dictionaries()
     {
-        tagToName["axle"] = "цапфу";
-        tagToName["bashmag"] = "башмак";
-        tagToName["cross"] = "рамку поперечных связей";
-        tagToName["finger"] = "палец";
-        tagToName["pin"] = "закладной штырь";
-        tagToName["pin_handle"] = "штырь с рукояткой";
-        tagToName["rigel"] = "ригель";
-        tagToName["shore"] = "стойку береговую";
-        tagToName["spacer"] = "распорку";
-        tagToName["post"] = "стойку";
-        tagToName["post_long"] = "стойку опоры";
-        tagToName["aparel"] = "арарель";
-        tagToName["earrinhg"] = "серьгу";
-        tagToName["longitudinal_connection"] = "продольную связь";
-        tagToName["railihg_stand"] = "перильную стойку";
-        tagToName["shield"] = "деформационый щит";
-        tagToName["wheel"] = "колесоотбой";
-        tagToName["blocks_prolit"] = "блок пролета";        
+        tagToName["axle"] = "цапфу (марки П1-1)";
+        tagToName["bashmag"] = "башмак (марки П2)";
+        tagToName["cross"] = "рамку поперечных связей (марки РМ3)";
+        tagToName["finger"] = "палец (марки С8)";
+        tagToName["pin"] = "закладной штырь (марки Ш7)";
+        tagToName["pin_handle"] = "Штырь (марки Ш6)";
+        tagToName["rigel"] = "ригель промежуточной опоры (марки Р2)";
+        tagToName["shore"] = "стойку береговой опоры (марки С11)";
+        tagToName["spacer"] = "распорку (марки РС1)";
+        tagToName["post"] = "стойку (марки С4)";
+        tagToName["post_long"] = "стойку опоры (марки С3)";
+        tagToName["aparel"] = "аппарель (марки А1)";
+        tagToName["earring"] = "серьгу (марки П1-2)";
+        tagToName["longitudinal_connection"] = "гибкую продольную тормозную связь (марки СВ1)";
+        tagToName["railing_stand"] = "перильную стойку (марки К3)";
+        tagToName["shield"] = "деформационый щит (марки Д1)";
+        tagToName["wheel"] = "колесоотбой (марки К1)";
+        tagToName["blocks_prolit"] = "блок пролетного строение (марки П1)";
+        tagToName["anchor"] = "анкерную сваю (марки М2)";
+        tagToName["lanyard"] = "соединительный талреп (марки Т2)";
     }
 
     private void OnDisable() => Is_Test = false;  

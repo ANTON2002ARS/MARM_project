@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8834848014815856855}
   - component: {fileID: 8164016340500413964}
-  - component: {fileID: 5552090766212419898}
   - component: {fileID: 7080911674403282276}
+  - component: {fileID: 5552090766212419898}
   m_Layer: 0
   m_Name: Point_Installation
   m_TagString: Untagged
@@ -57,20 +57,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.3, y: 6, z: 0.3}
   m_Center: {x: 0, y: -0.3, z: 0}
---- !u!114 &5552090766212419898
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3124023383755088854}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d79ef31405eb6943a3f4340309079f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  beacon: {fileID: 3690588590730416150}
-  flage: {fileID: 8292442651476687823}
 --- !u!95 &7080911674403282276
 Animator:
   serializedVersion: 5
@@ -92,6 +78,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5552090766212419898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3124023383755088854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d79ef31405eb6943a3f4340309079f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  number_beacon: 0
+  beacon: {fileID: 3690588590730416150}
+  flage: {fileID: 8292442651476687823}
 --- !u!1001 &2586221339522004906
 PrefabInstance:
   m_ObjectHideFlags: 0
