@@ -8,15 +8,15 @@ public class Controler_Build_Marm : MonoBehaviour
     [SerializeField] private List<GameObject> Shore_Marm;
     [SerializeField] private GameObject Crane;
     [SerializeField] private GameObject Zil;
-    // Что идет сборка моста \\
+    // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ \\
     public bool is_Build_Bridge;
-    // Какой пролет строится \\
+    // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ \\
     [SerializeField] private int number_span;
-    // Кран нужно установить в позицию \\
+    // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ \\
     [SerializeField] private bool Crane_to_set;
     public bool Is_Open_Menu { set; private get; }
     private Animator Animator_Installation = new Animator();
-    // Список ошибок\\
+    // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ\\
     public List<Mistake_build> list_mistakes = new List<Mistake_build>();
 
     public static Controler_Build_Marm Instance_Call_Control { set; get; }
@@ -32,7 +32,7 @@ public class Controler_Build_Marm : MonoBehaviour
             return;
         if (!Crane_to_set)
             return;
-        // Проигрование анимации последовательно \\ //animation.CrossFade ("atk");
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ \\ //animation.CrossFade ("atk");
         Debug.Log("Install_Span START, number_span: " + number_span);
         switch (number_span)
         {
@@ -71,9 +71,9 @@ public class Controler_Build_Marm : MonoBehaviour
                 break;
         }
 
-        // Увеличение следующий пролет \\
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ \\
         number_span++;
-        // Все пролеты установлены \\
+        // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ \\
         if (number_span > 10)
         {
             is_Build_Bridge = false;
@@ -81,7 +81,7 @@ public class Controler_Build_Marm : MonoBehaviour
             GameManager.Instance.Call_Button_1();
             GameManager.Instance.Call_Button_2();
         }
-        // Нужно установить в позицию \\
+        // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ \\
         Crane_to_set = false;
     }
 
@@ -93,7 +93,7 @@ public class Controler_Build_Marm : MonoBehaviour
             return;
         if (Crane_to_set)
             return;
-        // Проигрование анимации последовательно \\
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ \\
         Debug.Log("Set_Crane START, number_span: " + number_span);
         Animator_Installation.enabled = true;
         switch (number_span)
@@ -133,7 +133,7 @@ public class Controler_Build_Marm : MonoBehaviour
                 Animator_Installation.Play("Set_Manipulator_coastal_support_2");
                 break;
         }
-        // Кран установили в позицию \\
+        // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ \\
         Crane_to_set = true;
     }
 
@@ -148,7 +148,7 @@ public class Controler_Build_Marm : MonoBehaviour
         Crane_to_set = false;
     }
         
-    public List<Mistake_build> Сheck_Other()
+    public List<Mistake_build> Check_Other()
     {
         if(list_mistakes.Count >= 2)
             list_mistakes.Clear();

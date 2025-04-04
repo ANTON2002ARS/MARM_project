@@ -17,10 +17,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject Terrain_with_river;
     [SerializeField] private GameObject Terrain_wist_road;
     [SerializeField] private List<GameObject> longitudinal_connection;
-    /*// Для задержки при открытии меню\\
-    private float delay = 1.2f; // Установите задержку в секундах
-    private float lastKeyPressTime; // Время последнего нажатия клавиши*/
-    // Для вызова кода \\
+    /*// пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ\\
+    private float delay = 1.2f; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    private float lastKeyPressTime; // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ*/
+    // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ \\
     public static GameManager Instance { get; private set; }
     private void Awake() => Instance = this;
  
@@ -52,19 +52,19 @@ public class GameManager : MonoBehaviour
     private void Show_Button_Ent_Test_1() => Button_End_Test_1.SetActive(true);
     private void Show_Button_Ent_Test_2() => Button_End_Test_2.SetActive(true);
 
-    // Проверяем что все элементы моста установлены \\
-    public void Сheck_Other()
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ \\
+    public void Check_Other()
     {        
         List<Mistake_build> list_mistakes = new List<Mistake_build>();
 
-        list_mistakes.AddRange(Controler_Build_Marm.Instance_Call_Control.Сheck_Other());
+        list_mistakes.AddRange(Controler_Build_Marm.Instance_Call_Control.Check_Other());
         if(list_mistakes.Count ==0)
         {
-            player.GetComponent<Player>().Show_Learn_Text_Image("Тест проеден все элементы моста установлены", null);
+            player.GetComponent<Player>().Show_Learn_Text_Image("пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ", null);
             return;
         }
-        //string status_text = "АНАЛИЗ ПРОЛЕТОВ МОСТА \n" + "Список не установленый элементов: \n";
-        // Собираем строку для отчета перед игроком\\
+        //string status_text = "пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ \n" + "пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: \n";
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ\\
         /*foreach (var m in list_mistakes)
             status_text += m.Mistake + "\n";           
         Debug.Log(status_text);*/
@@ -76,21 +76,21 @@ public class GameManager : MonoBehaviour
     {
         Button_End_Test_1.SetActive(false);
         Button_End_Test_2.SetActive(false);        
-        // Начало постройки моста или показать мост \\
+        // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ \\
         var build = Build_Marm.GetComponent<Controler_Build_Marm>();
         build.Start_Build_Bridge();
     }    
 
     private void Active_longitudinal_(bool is_active) 
     {         
-        // Для дороги \\
+        // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ \\
         foreach (var item in longitudinal_connection)
             item.SetActive(is_active);        
     }
 
     public void Open_Main_Menu() => Switch_Scenes_GM.Menu_Scene();
         
-    // Меняем вид и игрока на меня и обратно \\
+    // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ \\
     private void Change_View()
     {
         if (player.activeSelf)
